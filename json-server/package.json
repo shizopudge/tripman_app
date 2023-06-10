@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "json-server": "^0.17.3"
+  },
+  "name": "json-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "json-server --host 192.168.42.246 db.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
