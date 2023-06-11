@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../features/home/domain/entities/trip.dart';
 import '../../../domain/entities/date_interval/date_interval.dart';
+import '../../../domain/entities/trip/trip.dart';
 import '../../../styles/styles.dart';
 import '../../../utils/date_format_utils.dart';
 import '../images/image_cached.dart';

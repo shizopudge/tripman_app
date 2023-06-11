@@ -6,17 +6,17 @@ import '../../../../core/domain/entities/date_interval/date_interval.dart';
 import '../../../../core/error/failures/failures.dart';
 import '../models/trip_model.dart';
 
-abstract interface class TripRemoteDataSource {
+abstract interface class HomeRemoteDataSource {
   Future<List<TripModel>> fetchTrips({
     String? type,
     DateInterval? interval,
   });
 }
 
-class TripRemoteDataSourceImpl implements TripRemoteDataSource {
+class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   final DioClient dioClient;
 
-  const TripRemoteDataSourceImpl({required this.dioClient});
+  const HomeRemoteDataSourceImpl(this.dioClient);
 
   @override
   Future<List<TripModel>> fetchTrips(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/domain/entities/date_interval/date_interval.dart';
+import '../../../../core/domain/entities/trip/trip.dart';
 import '../../../../core/error/failures/failures.dart';
 import '../../../../core/presentation/animations/fade_animation_y_down.dart';
 import '../../../../core/presentation/widgets/cards/trip_card.dart';
@@ -10,7 +11,6 @@ import '../../../../core/presentation/widgets/common/failure_message.dart';
 import '../../../../core/presentation/widgets/common/loader.dart';
 import '../../../../core/styles/styles.dart';
 import '../../../../core/utils/popup_utils.dart';
-import '../../domain/entities/trip.dart';
 import '../cubit/home_cubit.dart';
 
 class HomeBody extends StatelessWidget {
@@ -162,7 +162,6 @@ class HomeBody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: FailureMessage(
                   failure: failure,
-                  iconPath: 'assets/icons/error.svg',
                   color: kBlack,
                   onButtonTap: () => context.read<HomeCubit>().loadTrips(),
                 ),

@@ -5,10 +5,10 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../../core/data/local/constants.dart';
 import '../../../../core/domain/entities/date_interval/date_interval.dart';
+import '../../../../core/domain/entities/trip/trip.dart';
 import '../../../../core/domain/entities/trip_type/trip_type.dart';
 import '../../../../core/error/failures/failures.dart';
-import '../../../../core/presentation/logic/internet/internet_cubit.dart';
-import '../../domain/entities/trip.dart';
+import '../../../../core/logic/internet/internet_cubit.dart';
 import '../../domain/usecases/fetch_trips.dart';
 
 part 'home_cubit.freezed.dart';
@@ -18,7 +18,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> with HydratedMixin {
   final FetchTrips _fetchTrips;
   final InternetCubit _internetCubit;
-  late final StreamSubscription internetStreamSubscription;
+  late final StreamSubscription _internetStreamSubscription;
   HomeCubit({
     required FetchTrips fetchTrips,
     required InternetCubit internetCubit,
@@ -31,7 +31,7 @@ class HomeCubit extends Cubit<HomeState> with HydratedMixin {
   bool? _isConnected;
 
   void monitorInternetCubit() {
-    internetStreamSubscription = _internetCubit.stream.listen((internetState) {
+    _internetStreamSubscription = _internetCubit.stream.listen((internetState) {
       internetState.whenOrNull(
         connected: () {
           _isConnected = true;
@@ -126,7 +126,7 @@ class HomeCubit extends Cubit<HomeState> with HydratedMixin {
 
   @override
   Future<void> close() {
-    internetStreamSubscription.cancel();
+    _internetStreamSubscription.cancel();
     return super.close();
   }
 }

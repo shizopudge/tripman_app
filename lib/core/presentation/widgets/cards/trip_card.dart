@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../features/home/domain/entities/trip.dart';
+import '../../../domain/entities/trip/trip.dart';
 import '../../../styles/styles.dart';
 import '../../../utils/date_format_utils.dart';
 import '../buttons/rounded_border_button.dart';

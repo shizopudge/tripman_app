@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'day.dart';
 
 import '../../../../domain/entities/date_interval/date_interval.dart';
 import '../../../../styles/styles.dart';
@@ -8,8 +7,9 @@ import '../../../../utils/date_format_utils.dart';
 import '../../../animations/fade_animation_y_up.dart';
 import '../../buttons/rounded_text_button.dart';
 import '../../common/bottom_container.dart';
-import '../logic/calendar_cubit.dart';
 import '../entities/month.dart';
+import '../logic/calendar_cubit.dart';
+import 'day.dart';
 
 class Calendar extends StatelessWidget {
   final int monthCount;

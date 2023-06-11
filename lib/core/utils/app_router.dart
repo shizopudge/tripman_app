@@ -1,38 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tripman/core/di/service_locator.dart';
-import 'package:tripman/features/home/presentation/cubit/home_cubit.dart';
-import 'package:tripman/features/start_page.dart';
+import 'package:page_transition/page_transition.dart';
 
-import '../../features/home/data/datasources/trip_remote_data_source.dart';
-import '../../features/home/data/repositories/trip_repository_impl.dart';
-import '../../features/home/domain/usecases/fetch_trips.dart';
+import '../../features/code_verification/presentation/code_verification_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
-import '../data/network/api/dio_client.dart';
-import '../presentation/logic/internet/internet_cubit.dart';
+import '../../features/sms_sender/presentation/sms_sender_screen.dart';
+import '../../features/start/presentation/start_screen.dart';
+import '../domain/entities/code_confirmation_screen_params/code_confiramtion_screen_params.dart';
 
 class AppRouter {
-  final _homeCubit = HomeCubit(
-      fetchTrips: FetchTrips(TripRepositoryImpl(
-          remoteDataSource:
-              TripRemoteDataSourceImpl(dioClient: getIt<DioClient>()))),
-      internetCubit: getIt<InternetCubit>());
+  static const fadeTransitionDuration = Duration(milliseconds: 250);
 
   Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (_) => const StartPage(),
+          builder: (_) => const StartScreen(),
         );
-      case '/home':
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider<HomeCubit>(
-            create: (_) => _homeCubit..loadTrips(),
-            child: const HomeScreen(),
+      case SmsSenderScreen.routeName:
+        return PageTransition(
+          duration: fadeTransitionDuration,
+          type: PageTransitionType.fade,
+          child: const SmsSenderScreen(),
+        );
+      case CodeVerificationScreen.routeName:
+        final codeConfiramtionScreenParams =
+            routeSettings.arguments as CodeVerificationScreenParams;
+        return PageTransition(
+          duration: fadeTransitionDuration,
+          type: PageTransitionType.fade,
+          child: CodeVerificationScreen(
+            phoneNumber: codeConfiramtionScreenParams.phoneNumber,
           ),
+        );
+      case HomeScreen.routeName:
+        return PageTransition(
+          duration: fadeTransitionDuration,
+          type: PageTransitionType.fade,
+          child: const HomeScreen(),
         );
       default:
         return null;
     }
   }
+
+  void dispose() {}
 }

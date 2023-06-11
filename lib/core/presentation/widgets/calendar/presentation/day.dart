@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/entities/date_interval/date_interval.dart';
 import '../../../../utils/date_format_utils.dart';
-import '../logic/calendar_cubit.dart';
 import '../entities/month.dart';
+import '../logic/calendar_cubit.dart';
 import 'days/default_day.dart';
 import 'days/interval_day.dart';
 import 'days/marked_day.dart';

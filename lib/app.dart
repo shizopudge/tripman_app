@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import 'core/di/service_locator.dart';
-import 'core/presentation/logic/internet/internet_cubit.dart';
+import 'core/logic/internet/internet_cubit.dart';
 import 'core/styles/styles.dart';
 import 'core/utils/app_router.dart';
 import 'core/utils/popup_utils.dart';
@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(
           lazy: false,
-          create: (_) => getIt<InternetCubit>()..checkInternetConnection(),
+          create: (_) => getIt<InternetCubit>(),
         ),
       ],
       child: BlocListener<InternetCubit, InternetState>(

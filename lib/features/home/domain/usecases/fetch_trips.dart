@@ -2,12 +2,12 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/constants/type_defs.dart';
 import '../../../../core/domain/entities/date_interval/date_interval.dart';
+import '../../../../core/domain/entities/trip/trip.dart';
 import '../../../../core/domain/usecases/usecase.dart';
-import '../entities/trip.dart';
-import '../repositories/trip_repository.dart';
+import '../repositories/home_repository.dart';
 
 class FetchTrips implements UseCase<List<Trip>, Params> {
-  final TripRepository repository;
+  final HomeRepository repository;
 
   FetchTrips(this.repository);
 

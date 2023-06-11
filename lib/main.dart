@@ -12,7 +12,7 @@ void bootstrap() async {
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
   Bloc.observer = AppBlocObserver();
-  await setupGetIt();
+  await setup();
   runApp(
     const App(),
   );

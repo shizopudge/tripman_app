@@ -6,18 +6,16 @@ import '../../../styles/styles.dart';
 import '../buttons/rounded_text_button.dart';
 
 class FailureMessage extends StatelessWidget {
-  final String iconPath;
   final Failure failure;
   final Color? color;
   final String buttonText;
-  final VoidCallback onButtonTap;
+  final VoidCallback? onButtonTap;
   const FailureMessage({
     super.key,
     required this.failure,
-    required this.iconPath,
     this.color,
     this.buttonText = 'Обновить',
-    required this.onButtonTap,
+    this.onButtonTap,
   });
 
   @override
@@ -52,10 +50,11 @@ class FailureMessage extends StatelessWidget {
         const SizedBox(
           height: 24,
         ),
-        RoundedTextButton(
-          onTap: onButtonTap,
-          text: buttonText,
-        ),
+        if (onButtonTap != null)
+          RoundedTextButton(
+            onTap: onButtonTap,
+            text: buttonText,
+          ),
       ],
     );
   }

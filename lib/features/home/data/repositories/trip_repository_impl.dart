@@ -2,15 +2,15 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/constants/type_defs.dart';
 import '../../../../core/domain/entities/date_interval/date_interval.dart';
+import '../../../../core/domain/entities/trip/trip.dart';
 import '../../../../core/error/failures/failures.dart';
-import '../../domain/entities/trip.dart';
-import '../../domain/repositories/trip_repository.dart';
+import '../../domain/repositories/home_repository.dart';
 import '../datasources/trip_remote_data_source.dart';
 
-class TripRepositoryImpl implements TripRepository {
-  final TripRemoteDataSource remoteDataSource;
+class HomeRepositoryImpl implements HomeRepository {
+  final HomeRemoteDataSource remoteDataSource;
 
-  const TripRepositoryImpl({
+  const HomeRepositoryImpl({
     required this.remoteDataSource,
   });
 

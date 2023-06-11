@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/domain/entities/date_interval/date_interval.dart';
-import '../../data/models/trip_model.dart';
+import '../../../../features/home/data/models/trip_model.dart';
 
 part 'trip.freezed.dart';
 part 'trip.g.dart';
