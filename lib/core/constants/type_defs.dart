@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-import '../error/failures/failures.dart';
+import '../error/failures/fault.dart';
 
-typedef FutureEither<T> = Future<Either<Failure, T>>;
+typedef FutureEither<T> = Future<Either<Fault, T>>;

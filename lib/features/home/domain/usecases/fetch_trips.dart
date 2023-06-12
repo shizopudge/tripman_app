@@ -6,21 +6,24 @@ import '../../../../core/domain/entities/trip/trip.dart';
 import '../../../../core/domain/usecases/usecase.dart';
 import '../repositories/home_repository.dart';
 
-class FetchTrips implements UseCase<List<Trip>, Params> {
+class FetchTrips implements UseCase<List<Trip>, FetchTripsParams> {
   final HomeRepository repository;
 
   FetchTrips(this.repository);
 
   @override
-  FutureEither<List<Trip>> call(Params params) async {
-    return await repository.fetchTrips();
+  FutureEither<List<Trip>> call(FetchTripsParams params) async {
+    return await repository.fetchTrips(
+      type: params.type,
+      dateInterval: params.dateInterval,
+    );
   }
 }
 
-class Params extends Equatable {
+class FetchTripsParams extends Equatable {
   final String? type;
   final DateInterval? dateInterval;
-  const Params({
+  const FetchTripsParams({
     this.type,
     this.dateInterval,
   });

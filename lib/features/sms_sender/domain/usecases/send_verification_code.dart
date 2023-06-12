@@ -4,21 +4,21 @@ import '../../../../core/constants/type_defs.dart';
 import '../../../../core/domain/usecases/usecase.dart';
 import '../repositories/sms_sender_repository.dart';
 
-class SendSmsVerificationCode implements UseCase<void, Params> {
+class SendSmsVerificationCode
+    implements UseCase<void, SendSmsVerificationCodeParams> {
   final SmsSenderRepository repository;
 
   SendSmsVerificationCode(this.repository);
 
   @override
-  FutureEither<void> call(Params params) async {
-    return await repository.sendVerificationCode(params.phoneNumber);
-  }
+  FutureEither<String> call(SendSmsVerificationCodeParams params) async =>
+      await repository.sendVerificationCode(params.phoneNumber);
 }
 
-class Params extends Equatable {
+class SendSmsVerificationCodeParams extends Equatable {
   final String phoneNumber;
 
-  const Params({
+  const SendSmsVerificationCodeParams({
     required this.phoneNumber,
   });
 

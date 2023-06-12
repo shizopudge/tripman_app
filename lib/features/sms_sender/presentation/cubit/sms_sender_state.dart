@@ -1,11 +1,21 @@
 part of 'sms_sender_cubit.dart';
 
-//??? error states and loading states
-
 @freezed
 class SmsSenderState with _$SmsSenderState {
-  const factory SmsSenderState({
+  const factory SmsSenderState.loading({
+    required String phoneNumber,
+  }) = _Loading;
+  const factory SmsSenderState.input({
     @Default('') String phoneNumber,
     @Default(false) bool isCorrect,
-  }) = _SmsSenderState;
+  }) = _Input;
+  const factory SmsSenderState.success({
+    required String smsVerificationCode,
+    required String phoneNumber,
+    required bool isFirstTime,
+  }) = SmsSenderSuccess;
+  const factory SmsSenderState.failure({
+    required Fault fault,
+    required String phoneNumber,
+  }) = SmsSenderFailure;
 }

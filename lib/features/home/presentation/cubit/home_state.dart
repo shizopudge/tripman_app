@@ -4,23 +4,23 @@ part of 'home_cubit.dart';
 class HomeState with _$HomeState {
   const HomeState._();
   const factory HomeState.loading({
-    @Default(LocalConstants.defaultTripType) TripType tripType,
-    @Default(null) DateInterval? dateInterval,
+    @Default(LocalConstants.defaultTripType) TripType selectedTripType,
+    @Default(null) DateInterval? selectedDateInterval,
     @Default(false) bool isMenuOpened,
     @Default(false) bool isRefreshing,
     @Default([]) List<Trip> trips,
   }) = _Loading;
   const factory HomeState.success({
-    required TripType tripType,
-    required DateInterval? dateInterval,
+    required TripType selectedTripType,
+    required DateInterval? selectedDateInterval,
     required bool isMenuOpened,
     required List<Trip> trips,
   }) = _Success;
   const factory HomeState.failure({
-    required TripType tripType,
-    required DateInterval? dateInterval,
+    required TripType selectedTripType,
+    required DateInterval? selectedDateInterval,
     required bool isMenuOpened,
-    required Failure failure,
+    required Fault fault,
     @Default([]) List<Trip> trips,
   }) = _Failure;
 
@@ -29,5 +29,5 @@ class HomeState with _$HomeState {
 
   @override
   String toString() =>
-      'HomeState: $runtimeType, tripType: $tripType, dateInterval: $dateInterval, isMenuOpened: $isMenuOpened';
+      'HomeState: $runtimeType, tripType: $selectedTripType, dateInterval: $selectedDateInterval, isMenuOpened: $isMenuOpened';
 }

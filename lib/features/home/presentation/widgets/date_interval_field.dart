@@ -7,12 +7,12 @@ import '../../../../core/styles/styles.dart';
 import '../../../../core/utils/date_format_utils.dart';
 
 class DateIntervalField extends StatelessWidget {
-  final DateInterval? selectedDateInterval;
+  final DateInterval? dateInterval;
   final VoidCallback onTap;
   final VoidCallback onClear;
   const DateIntervalField({
     super.key,
-    this.selectedDateInterval,
+    this.dateInterval,
     required this.onTap,
     required this.onClear,
   });
@@ -26,8 +26,7 @@ class DateIntervalField extends StatelessWidget {
         height: 48,
         decoration: BoxDecoration(
           border: Border.all(
-            color:
-                selectedDateInterval == null ? kBlack.withOpacity(.2) : kBlack,
+            color: dateInterval == null ? kBlack.withOpacity(.2) : kBlack,
           ),
           borderRadius: BorderRadius.circular(8),
         ),
@@ -48,11 +47,10 @@ class DateIntervalField extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
-                        child: selectedDateInterval != null
+                        child: dateInterval != null
                             ? Text(
                                 DateFormatUtils.dateRange(
-                                    interval: selectedDateInterval!,
-                                    withYear: true),
+                                    interval: dateInterval!, withYear: true),
                                 overflow: TextOverflow.ellipsis,
                                 style: kSFProDisplayMedium.copyWith(
                                   color: kBlack,
@@ -75,7 +73,7 @@ class DateIntervalField extends StatelessWidget {
                 ),
               ),
             ),
-            if (selectedDateInterval != null)
+            if (dateInterval != null)
               MyCloseButton(
                 onTap: onClear,
               ),

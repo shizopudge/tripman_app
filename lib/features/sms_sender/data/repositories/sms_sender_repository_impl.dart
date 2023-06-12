@@ -1,22 +1,23 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/constants/type_defs.dart';
-import '../../../../core/error/failures/failures.dart';
+import '../../../../core/error/failures/fault.dart';
 import '../../domain/repositories/sms_sender_repository.dart';
 import '../datasources/sms_sender_remote_data_source.dart';
 
 class SmsSenderRepositoryImpl implements SmsSenderRepository {
   final SmsSenderRemoteDataSource remoteDataSource;
 
-  SmsSenderRepositoryImpl({required this.remoteDataSource});
+  SmsSenderRepositoryImpl(this.remoteDataSource);
   @override
-  FutureEither<void> sendVerificationCode(String phoneNumber) async {
+  FutureEither<String> sendVerificationCode(String phoneNumber) async {
     try {
-      return Right(await remoteDataSource.sendVerificationCode(phoneNumber));
-    } on Failure catch (e) {
-      return Left(ServerFailure(message: e.message));
+      final result = await remoteDataSource.sendVerificationCode(phoneNumber);
+      return Right(result);
+    } on Fault catch (e) {
+      return Left(ServerFault(message: e.message));
     } catch (e) {
-      return Left(ServerFailure(message: e.toString()));
+      return Left(ServerFault(message: e.toString()));
     }
   }
 }

@@ -31,46 +31,79 @@ HomeState _$HomeStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HomeState {
-  TripType get tripType => throw _privateConstructorUsedError;
-  DateInterval? get dateInterval => throw _privateConstructorUsedError;
+  TripType get selectedTripType => throw _privateConstructorUsedError;
+  DateInterval? get selectedDateInterval => throw _privateConstructorUsedError;
   bool get isMenuOpened => throw _privateConstructorUsedError;
   List<Trip> get trips => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)
         loading,
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)
         success,
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)
         failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)?
         loading,
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)?
         success,
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)?
         failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)?
         loading,
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)?
         success,
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)?
         failure,
     required TResult orElse(),
   }) =>
@@ -109,13 +142,13 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {TripType tripType,
-      DateInterval? dateInterval,
+      {TripType selectedTripType,
+      DateInterval? selectedDateInterval,
       bool isMenuOpened,
       List<Trip> trips});
 
-  $TripTypeCopyWith<$Res> get tripType;
-  $DateIntervalCopyWith<$Res>? get dateInterval;
+  $TripTypeCopyWith<$Res> get selectedTripType;
+  $DateIntervalCopyWith<$Res>? get selectedDateInterval;
 }
 
 /// @nodoc
@@ -131,19 +164,19 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tripType = null,
-    Object? dateInterval = freezed,
+    Object? selectedTripType = null,
+    Object? selectedDateInterval = freezed,
     Object? isMenuOpened = null,
     Object? trips = null,
   }) {
     return _then(_value.copyWith(
-      tripType: null == tripType
-          ? _value.tripType
-          : tripType // ignore: cast_nullable_to_non_nullable
+      selectedTripType: null == selectedTripType
+          ? _value.selectedTripType
+          : selectedTripType // ignore: cast_nullable_to_non_nullable
               as TripType,
-      dateInterval: freezed == dateInterval
-          ? _value.dateInterval
-          : dateInterval // ignore: cast_nullable_to_non_nullable
+      selectedDateInterval: freezed == selectedDateInterval
+          ? _value.selectedDateInterval
+          : selectedDateInterval // ignore: cast_nullable_to_non_nullable
               as DateInterval?,
       isMenuOpened: null == isMenuOpened
           ? _value.isMenuOpened
@@ -158,21 +191,21 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 
   @override
   @pragma('vm:prefer-inline')
-  $TripTypeCopyWith<$Res> get tripType {
-    return $TripTypeCopyWith<$Res>(_value.tripType, (value) {
-      return _then(_value.copyWith(tripType: value) as $Val);
+  $TripTypeCopyWith<$Res> get selectedTripType {
+    return $TripTypeCopyWith<$Res>(_value.selectedTripType, (value) {
+      return _then(_value.copyWith(selectedTripType: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $DateIntervalCopyWith<$Res>? get dateInterval {
-    if (_value.dateInterval == null) {
+  $DateIntervalCopyWith<$Res>? get selectedDateInterval {
+    if (_value.selectedDateInterval == null) {
       return null;
     }
 
-    return $DateIntervalCopyWith<$Res>(_value.dateInterval!, (value) {
-      return _then(_value.copyWith(dateInterval: value) as $Val);
+    return $DateIntervalCopyWith<$Res>(_value.selectedDateInterval!, (value) {
+      return _then(_value.copyWith(selectedDateInterval: value) as $Val);
     });
   }
 }
@@ -185,16 +218,16 @@ abstract class _$$_LoadingCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {TripType tripType,
-      DateInterval? dateInterval,
+      {TripType selectedTripType,
+      DateInterval? selectedDateInterval,
       bool isMenuOpened,
       bool isRefreshing,
       List<Trip> trips});
 
   @override
-  $TripTypeCopyWith<$Res> get tripType;
+  $TripTypeCopyWith<$Res> get selectedTripType;
   @override
-  $DateIntervalCopyWith<$Res>? get dateInterval;
+  $DateIntervalCopyWith<$Res>? get selectedDateInterval;
 }
 
 /// @nodoc
@@ -207,20 +240,20 @@ class __$$_LoadingCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tripType = null,
-    Object? dateInterval = freezed,
+    Object? selectedTripType = null,
+    Object? selectedDateInterval = freezed,
     Object? isMenuOpened = null,
     Object? isRefreshing = null,
     Object? trips = null,
   }) {
     return _then(_$_Loading(
-      tripType: null == tripType
-          ? _value.tripType
-          : tripType // ignore: cast_nullable_to_non_nullable
+      selectedTripType: null == selectedTripType
+          ? _value.selectedTripType
+          : selectedTripType // ignore: cast_nullable_to_non_nullable
               as TripType,
-      dateInterval: freezed == dateInterval
-          ? _value.dateInterval
-          : dateInterval // ignore: cast_nullable_to_non_nullable
+      selectedDateInterval: freezed == selectedDateInterval
+          ? _value.selectedDateInterval
+          : selectedDateInterval // ignore: cast_nullable_to_non_nullable
               as DateInterval?,
       isMenuOpened: null == isMenuOpened
           ? _value.isMenuOpened
@@ -242,8 +275,8 @@ class __$$_LoadingCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Loading extends _Loading {
   const _$_Loading(
-      {this.tripType = LocalConstants.defaultTripType,
-      this.dateInterval = null,
+      {this.selectedTripType = LocalConstants.defaultTripType,
+      this.selectedDateInterval = null,
       this.isMenuOpened = false,
       this.isRefreshing = false,
       final List<Trip> trips = const [],
@@ -257,10 +290,10 @@ class _$_Loading extends _Loading {
 
   @override
   @JsonKey()
-  final TripType tripType;
+  final TripType selectedTripType;
   @override
   @JsonKey()
-  final DateInterval? dateInterval;
+  final DateInterval? selectedDateInterval;
   @override
   @JsonKey()
   final bool isMenuOpened;
@@ -284,10 +317,10 @@ class _$_Loading extends _Loading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loading &&
-            (identical(other.tripType, tripType) ||
-                other.tripType == tripType) &&
-            (identical(other.dateInterval, dateInterval) ||
-                other.dateInterval == dateInterval) &&
+            (identical(other.selectedTripType, selectedTripType) ||
+                other.selectedTripType == selectedTripType) &&
+            (identical(other.selectedDateInterval, selectedDateInterval) ||
+                other.selectedDateInterval == selectedDateInterval) &&
             (identical(other.isMenuOpened, isMenuOpened) ||
                 other.isMenuOpened == isMenuOpened) &&
             (identical(other.isRefreshing, isRefreshing) ||
@@ -297,8 +330,13 @@ class _$_Loading extends _Loading {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, tripType, dateInterval,
-      isMenuOpened, isRefreshing, const DeepCollectionEquality().hash(_trips));
+  int get hashCode => Object.hash(
+      runtimeType,
+      selectedTripType,
+      selectedDateInterval,
+      isMenuOpened,
+      isRefreshing,
+      const DeepCollectionEquality().hash(_trips));
 
   @JsonKey(ignore: true)
   @override
@@ -309,52 +347,87 @@ class _$_Loading extends _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)
         loading,
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)
         success,
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)
         failure,
   }) {
-    return loading(tripType, dateInterval, isMenuOpened, isRefreshing, trips);
+    return loading(selectedTripType, selectedDateInterval, isMenuOpened,
+        isRefreshing, trips);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)?
         loading,
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)?
         success,
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)?
         failure,
   }) {
-    return loading?.call(
-        tripType, dateInterval, isMenuOpened, isRefreshing, trips);
+    return loading?.call(selectedTripType, selectedDateInterval, isMenuOpened,
+        isRefreshing, trips);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)?
         loading,
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)?
         success,
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)?
         failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(tripType, dateInterval, isMenuOpened, isRefreshing, trips);
+      return loading(selectedTripType, selectedDateInterval, isMenuOpened,
+          isRefreshing, trips);
     }
     return orElse();
   }
@@ -403,8 +476,8 @@ class _$_Loading extends _Loading {
 
 abstract class _Loading extends HomeState {
   const factory _Loading(
-      {final TripType tripType,
-      final DateInterval? dateInterval,
+      {final TripType selectedTripType,
+      final DateInterval? selectedDateInterval,
       final bool isMenuOpened,
       final bool isRefreshing,
       final List<Trip> trips}) = _$_Loading;
@@ -413,9 +486,9 @@ abstract class _Loading extends HomeState {
   factory _Loading.fromJson(Map<String, dynamic> json) = _$_Loading.fromJson;
 
   @override
-  TripType get tripType;
+  TripType get selectedTripType;
   @override
-  DateInterval? get dateInterval;
+  DateInterval? get selectedDateInterval;
   @override
   bool get isMenuOpened;
   bool get isRefreshing;
@@ -435,15 +508,15 @@ abstract class _$$_SuccessCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {TripType tripType,
-      DateInterval? dateInterval,
+      {TripType selectedTripType,
+      DateInterval? selectedDateInterval,
       bool isMenuOpened,
       List<Trip> trips});
 
   @override
-  $TripTypeCopyWith<$Res> get tripType;
+  $TripTypeCopyWith<$Res> get selectedTripType;
   @override
-  $DateIntervalCopyWith<$Res>? get dateInterval;
+  $DateIntervalCopyWith<$Res>? get selectedDateInterval;
 }
 
 /// @nodoc
@@ -456,19 +529,19 @@ class __$$_SuccessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tripType = null,
-    Object? dateInterval = freezed,
+    Object? selectedTripType = null,
+    Object? selectedDateInterval = freezed,
     Object? isMenuOpened = null,
     Object? trips = null,
   }) {
     return _then(_$_Success(
-      tripType: null == tripType
-          ? _value.tripType
-          : tripType // ignore: cast_nullable_to_non_nullable
+      selectedTripType: null == selectedTripType
+          ? _value.selectedTripType
+          : selectedTripType // ignore: cast_nullable_to_non_nullable
               as TripType,
-      dateInterval: freezed == dateInterval
-          ? _value.dateInterval
-          : dateInterval // ignore: cast_nullable_to_non_nullable
+      selectedDateInterval: freezed == selectedDateInterval
+          ? _value.selectedDateInterval
+          : selectedDateInterval // ignore: cast_nullable_to_non_nullable
               as DateInterval?,
       isMenuOpened: null == isMenuOpened
           ? _value.isMenuOpened
@@ -486,8 +559,8 @@ class __$$_SuccessCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Success extends _Success {
   const _$_Success(
-      {required this.tripType,
-      required this.dateInterval,
+      {required this.selectedTripType,
+      required this.selectedDateInterval,
       required this.isMenuOpened,
       required final List<Trip> trips,
       final String? $type})
@@ -499,9 +572,9 @@ class _$_Success extends _Success {
       _$$_SuccessFromJson(json);
 
   @override
-  final TripType tripType;
+  final TripType selectedTripType;
   @override
-  final DateInterval? dateInterval;
+  final DateInterval? selectedDateInterval;
   @override
   final bool isMenuOpened;
   final List<Trip> _trips;
@@ -520,10 +593,10 @@ class _$_Success extends _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            (identical(other.tripType, tripType) ||
-                other.tripType == tripType) &&
-            (identical(other.dateInterval, dateInterval) ||
-                other.dateInterval == dateInterval) &&
+            (identical(other.selectedTripType, selectedTripType) ||
+                other.selectedTripType == selectedTripType) &&
+            (identical(other.selectedDateInterval, selectedDateInterval) ||
+                other.selectedDateInterval == selectedDateInterval) &&
             (identical(other.isMenuOpened, isMenuOpened) ||
                 other.isMenuOpened == isMenuOpened) &&
             const DeepCollectionEquality().equals(other._trips, _trips));
@@ -531,8 +604,12 @@ class _$_Success extends _Success {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, tripType, dateInterval,
-      isMenuOpened, const DeepCollectionEquality().hash(_trips));
+  int get hashCode => Object.hash(
+      runtimeType,
+      selectedTripType,
+      selectedDateInterval,
+      isMenuOpened,
+      const DeepCollectionEquality().hash(_trips));
 
   @JsonKey(ignore: true)
   @override
@@ -543,51 +620,86 @@ class _$_Success extends _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)
         loading,
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)
         success,
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)
         failure,
   }) {
-    return success(tripType, dateInterval, isMenuOpened, trips);
+    return success(selectedTripType, selectedDateInterval, isMenuOpened, trips);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)?
         loading,
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)?
         success,
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)?
         failure,
   }) {
-    return success?.call(tripType, dateInterval, isMenuOpened, trips);
+    return success?.call(
+        selectedTripType, selectedDateInterval, isMenuOpened, trips);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)?
         loading,
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)?
         success,
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)?
         failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(tripType, dateInterval, isMenuOpened, trips);
+      return success(
+          selectedTripType, selectedDateInterval, isMenuOpened, trips);
     }
     return orElse();
   }
@@ -636,8 +748,8 @@ class _$_Success extends _Success {
 
 abstract class _Success extends HomeState {
   const factory _Success(
-      {required final TripType tripType,
-      required final DateInterval? dateInterval,
+      {required final TripType selectedTripType,
+      required final DateInterval? selectedDateInterval,
       required final bool isMenuOpened,
       required final List<Trip> trips}) = _$_Success;
   const _Success._() : super._();
@@ -645,9 +757,9 @@ abstract class _Success extends HomeState {
   factory _Success.fromJson(Map<String, dynamic> json) = _$_Success.fromJson;
 
   @override
-  TripType get tripType;
+  TripType get selectedTripType;
   @override
-  DateInterval? get dateInterval;
+  DateInterval? get selectedDateInterval;
   @override
   bool get isMenuOpened;
   @override
@@ -666,17 +778,17 @@ abstract class _$$_FailureCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {TripType tripType,
-      DateInterval? dateInterval,
+      {TripType selectedTripType,
+      DateInterval? selectedDateInterval,
       bool isMenuOpened,
-      Failure failure,
+      Fault fault,
       List<Trip> trips});
 
   @override
-  $TripTypeCopyWith<$Res> get tripType;
+  $TripTypeCopyWith<$Res> get selectedTripType;
   @override
-  $DateIntervalCopyWith<$Res>? get dateInterval;
-  $FailureCopyWith<$Res> get failure;
+  $DateIntervalCopyWith<$Res>? get selectedDateInterval;
+  $FaultCopyWith<$Res> get fault;
 }
 
 /// @nodoc
@@ -689,29 +801,29 @@ class __$$_FailureCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tripType = null,
-    Object? dateInterval = freezed,
+    Object? selectedTripType = null,
+    Object? selectedDateInterval = freezed,
     Object? isMenuOpened = null,
-    Object? failure = null,
+    Object? fault = null,
     Object? trips = null,
   }) {
     return _then(_$_Failure(
-      tripType: null == tripType
-          ? _value.tripType
-          : tripType // ignore: cast_nullable_to_non_nullable
+      selectedTripType: null == selectedTripType
+          ? _value.selectedTripType
+          : selectedTripType // ignore: cast_nullable_to_non_nullable
               as TripType,
-      dateInterval: freezed == dateInterval
-          ? _value.dateInterval
-          : dateInterval // ignore: cast_nullable_to_non_nullable
+      selectedDateInterval: freezed == selectedDateInterval
+          ? _value.selectedDateInterval
+          : selectedDateInterval // ignore: cast_nullable_to_non_nullable
               as DateInterval?,
       isMenuOpened: null == isMenuOpened
           ? _value.isMenuOpened
           : isMenuOpened // ignore: cast_nullable_to_non_nullable
               as bool,
-      failure: null == failure
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as Failure,
+      fault: null == fault
+          ? _value.fault
+          : fault // ignore: cast_nullable_to_non_nullable
+              as Fault,
       trips: null == trips
           ? _value._trips
           : trips // ignore: cast_nullable_to_non_nullable
@@ -721,9 +833,9 @@ class __$$_FailureCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $FailureCopyWith<$Res> get failure {
-    return $FailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
+  $FaultCopyWith<$Res> get fault {
+    return $FaultCopyWith<$Res>(_value.fault, (value) {
+      return _then(_value.copyWith(fault: value));
     });
   }
 }
@@ -732,10 +844,10 @@ class __$$_FailureCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Failure extends _Failure {
   const _$_Failure(
-      {required this.tripType,
-      required this.dateInterval,
+      {required this.selectedTripType,
+      required this.selectedDateInterval,
       required this.isMenuOpened,
-      required this.failure,
+      required this.fault,
       final List<Trip> trips = const [],
       final String? $type})
       : _trips = trips,
@@ -746,13 +858,13 @@ class _$_Failure extends _Failure {
       _$$_FailureFromJson(json);
 
   @override
-  final TripType tripType;
+  final TripType selectedTripType;
   @override
-  final DateInterval? dateInterval;
+  final DateInterval? selectedDateInterval;
   @override
   final bool isMenuOpened;
   @override
-  final Failure failure;
+  final Fault fault;
   final List<Trip> _trips;
   @override
   @JsonKey()
@@ -770,20 +882,25 @@ class _$_Failure extends _Failure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Failure &&
-            (identical(other.tripType, tripType) ||
-                other.tripType == tripType) &&
-            (identical(other.dateInterval, dateInterval) ||
-                other.dateInterval == dateInterval) &&
+            (identical(other.selectedTripType, selectedTripType) ||
+                other.selectedTripType == selectedTripType) &&
+            (identical(other.selectedDateInterval, selectedDateInterval) ||
+                other.selectedDateInterval == selectedDateInterval) &&
             (identical(other.isMenuOpened, isMenuOpened) ||
                 other.isMenuOpened == isMenuOpened) &&
-            (identical(other.failure, failure) || other.failure == failure) &&
+            (identical(other.fault, fault) || other.fault == fault) &&
             const DeepCollectionEquality().equals(other._trips, _trips));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, tripType, dateInterval,
-      isMenuOpened, failure, const DeepCollectionEquality().hash(_trips));
+  int get hashCode => Object.hash(
+      runtimeType,
+      selectedTripType,
+      selectedDateInterval,
+      isMenuOpened,
+      fault,
+      const DeepCollectionEquality().hash(_trips));
 
   @JsonKey(ignore: true)
   @override
@@ -794,52 +911,87 @@ class _$_Failure extends _Failure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)
         loading,
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)
         success,
-    required TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)
+    required TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)
         failure,
   }) {
-    return failure(tripType, dateInterval, isMenuOpened, this.failure, trips);
+    return failure(
+        selectedTripType, selectedDateInterval, isMenuOpened, fault, trips);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)?
         loading,
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)?
         success,
-    TResult? Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)?
+    TResult? Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)?
         failure,
   }) {
     return failure?.call(
-        tripType, dateInterval, isMenuOpened, this.failure, trips);
+        selectedTripType, selectedDateInterval, isMenuOpened, fault, trips);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, bool isRefreshing, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            bool isRefreshing,
+            List<Trip> trips)?
         loading,
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            List<Trip> trips)?
         success,
-    TResult Function(TripType tripType, DateInterval? dateInterval,
-            bool isMenuOpened, Failure failure, List<Trip> trips)?
+    TResult Function(
+            TripType selectedTripType,
+            DateInterval? selectedDateInterval,
+            bool isMenuOpened,
+            Fault fault,
+            List<Trip> trips)?
         failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(tripType, dateInterval, isMenuOpened, this.failure, trips);
+      return failure(
+          selectedTripType, selectedDateInterval, isMenuOpened, fault, trips);
     }
     return orElse();
   }
@@ -888,22 +1040,22 @@ class _$_Failure extends _Failure {
 
 abstract class _Failure extends HomeState {
   const factory _Failure(
-      {required final TripType tripType,
-      required final DateInterval? dateInterval,
+      {required final TripType selectedTripType,
+      required final DateInterval? selectedDateInterval,
       required final bool isMenuOpened,
-      required final Failure failure,
+      required final Fault fault,
       final List<Trip> trips}) = _$_Failure;
   const _Failure._() : super._();
 
   factory _Failure.fromJson(Map<String, dynamic> json) = _$_Failure.fromJson;
 
   @override
-  TripType get tripType;
+  TripType get selectedTripType;
   @override
-  DateInterval? get dateInterval;
+  DateInterval? get selectedDateInterval;
   @override
   bool get isMenuOpened;
-  Failure get failure;
+  Fault get fault;
   @override
   List<Trip> get trips;
   @override

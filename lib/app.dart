@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import 'core/data/local/internet/internet_cubit.dart';
 import 'core/di/service_locator.dart';
-import 'core/logic/internet/internet_cubit.dart';
 import 'core/styles/styles.dart';
 import 'core/utils/app_router.dart';
 import 'core/utils/popup_utils.dart';
+import 'features/auth/presentation/cubit/auth_cubit.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -20,6 +21,10 @@ class App extends StatelessWidget {
         BlocProvider(
           lazy: false,
           create: (_) => getIt<InternetCubit>(),
+        ),
+        BlocProvider(
+          lazy: false,
+          create: (_) => getIt<AuthCubit>()..init(),
         ),
       ],
       child: BlocListener<InternetCubit, InternetState>(

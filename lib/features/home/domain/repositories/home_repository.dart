@@ -5,6 +5,6 @@ import '../../../../core/domain/entities/trip/trip.dart';
 abstract interface class HomeRepository {
   FutureEither<List<Trip>> fetchTrips({
     String? type,
-    DateInterval? interval,
+    DateInterval? dateInterval,
   });
 }

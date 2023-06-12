@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../domain/entities/trip_screen_arguments/trip_screen_arguments.dart';
+import '../../../../features/trip/presentation/trip_screen.dart';
 
 import '../../../domain/entities/trip/trip.dart';
 import '../../../styles/styles.dart';
@@ -38,7 +40,14 @@ class _TripCardState extends State<TripCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Navigator.of(context).pushNamed(
+        TripScreen.routeName,
+        arguments: TripScreenArguments(
+          trip: widget.trip,
+          carouselController: _carouselController,
+          currentImageNotifier: _currentImageNotifier,
+        ),
+      ),
       child: Container(
         height: 451,
         width: double.infinity,

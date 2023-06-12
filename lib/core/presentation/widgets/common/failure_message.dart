@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../error/failures/failures.dart';
+import '../../../error/failures/fault.dart';
 import '../../../styles/styles.dart';
 import '../buttons/rounded_text_button.dart';
 
 class FailureMessage extends StatelessWidget {
-  final Failure failure;
+  final Fault fault;
   final Color? color;
   final String buttonText;
   final VoidCallback? onButtonTap;
   const FailureMessage({
     super.key,
-    required this.failure,
+    required this.fault,
     this.color,
     this.buttonText = 'Обновить',
     this.onButtonTap,
@@ -22,7 +22,7 @@ class FailureMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (failure is ServerFailure)
+        if (fault is ServerFault)
           SvgPicture.asset(
             'assets/icons/network.svg',
             colorFilter: color != null
@@ -40,7 +40,7 @@ class FailureMessage extends StatelessWidget {
           height: 10,
         ),
         Text(
-          failure.message,
+          fault.message,
           textAlign: TextAlign.center,
           style: kSFProDisplayRegular.copyWith(
             fontSize: 14,

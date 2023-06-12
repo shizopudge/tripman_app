@@ -7,12 +7,13 @@ part of 'home_cubit.dart';
 // **************************************************************************
 
 _$_Loading _$$_LoadingFromJson(Map<String, dynamic> json) => _$_Loading(
-      tripType: json['tripType'] == null
+      selectedTripType: json['selectedTripType'] == null
           ? LocalConstants.defaultTripType
-          : TripType.fromJson(json['tripType'] as Map<String, dynamic>),
-      dateInterval: json['dateInterval'] == null
+          : TripType.fromJson(json['selectedTripType'] as Map<String, dynamic>),
+      selectedDateInterval: json['selectedDateInterval'] == null
           ? null
-          : DateInterval.fromJson(json['dateInterval'] as Map<String, dynamic>),
+          : DateInterval.fromJson(
+              json['selectedDateInterval'] as Map<String, dynamic>),
       isMenuOpened: json['isMenuOpened'] as bool? ?? false,
       isRefreshing: json['isRefreshing'] as bool? ?? false,
       trips: (json['trips'] as List<dynamic>?)
@@ -24,8 +25,8 @@ _$_Loading _$$_LoadingFromJson(Map<String, dynamic> json) => _$_Loading(
 
 Map<String, dynamic> _$$_LoadingToJson(_$_Loading instance) =>
     <String, dynamic>{
-      'tripType': instance.tripType,
-      'dateInterval': instance.dateInterval,
+      'selectedTripType': instance.selectedTripType,
+      'selectedDateInterval': instance.selectedDateInterval,
       'isMenuOpened': instance.isMenuOpened,
       'isRefreshing': instance.isRefreshing,
       'trips': instance.trips,
@@ -33,10 +34,12 @@ Map<String, dynamic> _$$_LoadingToJson(_$_Loading instance) =>
     };
 
 _$_Success _$$_SuccessFromJson(Map<String, dynamic> json) => _$_Success(
-      tripType: TripType.fromJson(json['tripType'] as Map<String, dynamic>),
-      dateInterval: json['dateInterval'] == null
+      selectedTripType:
+          TripType.fromJson(json['selectedTripType'] as Map<String, dynamic>),
+      selectedDateInterval: json['selectedDateInterval'] == null
           ? null
-          : DateInterval.fromJson(json['dateInterval'] as Map<String, dynamic>),
+          : DateInterval.fromJson(
+              json['selectedDateInterval'] as Map<String, dynamic>),
       isMenuOpened: json['isMenuOpened'] as bool,
       trips: (json['trips'] as List<dynamic>)
           .map((e) => Trip.fromJson(e as Map<String, dynamic>))
@@ -46,20 +49,22 @@ _$_Success _$$_SuccessFromJson(Map<String, dynamic> json) => _$_Success(
 
 Map<String, dynamic> _$$_SuccessToJson(_$_Success instance) =>
     <String, dynamic>{
-      'tripType': instance.tripType,
-      'dateInterval': instance.dateInterval,
+      'selectedTripType': instance.selectedTripType,
+      'selectedDateInterval': instance.selectedDateInterval,
       'isMenuOpened': instance.isMenuOpened,
       'trips': instance.trips,
       'runtimeType': instance.$type,
     };
 
 _$_Failure _$$_FailureFromJson(Map<String, dynamic> json) => _$_Failure(
-      tripType: TripType.fromJson(json['tripType'] as Map<String, dynamic>),
-      dateInterval: json['dateInterval'] == null
+      selectedTripType:
+          TripType.fromJson(json['selectedTripType'] as Map<String, dynamic>),
+      selectedDateInterval: json['selectedDateInterval'] == null
           ? null
-          : DateInterval.fromJson(json['dateInterval'] as Map<String, dynamic>),
+          : DateInterval.fromJson(
+              json['selectedDateInterval'] as Map<String, dynamic>),
       isMenuOpened: json['isMenuOpened'] as bool,
-      failure: Failure.fromJson(json['failure'] as Map<String, dynamic>),
+      fault: Fault.fromJson(json['fault'] as Map<String, dynamic>),
       trips: (json['trips'] as List<dynamic>?)
               ?.map((e) => Trip.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -69,10 +74,10 @@ _$_Failure _$$_FailureFromJson(Map<String, dynamic> json) => _$_Failure(
 
 Map<String, dynamic> _$$_FailureToJson(_$_Failure instance) =>
     <String, dynamic>{
-      'tripType': instance.tripType,
-      'dateInterval': instance.dateInterval,
+      'selectedTripType': instance.selectedTripType,
+      'selectedDateInterval': instance.selectedDateInterval,
       'isMenuOpened': instance.isMenuOpened,
-      'failure': instance.failure,
+      'fault': instance.fault,
       'trips': instance.trips,
       'runtimeType': instance.$type,
     };

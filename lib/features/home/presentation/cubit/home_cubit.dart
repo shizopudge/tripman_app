@@ -1,14 +1,15 @@
 import 'dart:async';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../../../../core/data/local/constants.dart';
+import '../../../../core/constants/app_constant_data.dart';
+import '../../../../core/data/local/internet/internet_cubit.dart';
 import '../../../../core/domain/entities/date_interval/date_interval.dart';
 import '../../../../core/domain/entities/trip/trip.dart';
 import '../../../../core/domain/entities/trip_type/trip_type.dart';
-import '../../../../core/error/failures/failures.dart';
-import '../../../../core/logic/internet/internet_cubit.dart';
+import '../../../../core/error/failures/fault.dart';
 import '../../domain/usecases/fetch_trips.dart';
 
 part 'home_cubit.freezed.dart';
@@ -43,12 +44,24 @@ class HomeCubit extends Cubit<HomeState> with HydratedMixin {
     });
   }
 
+  void init() async {
+    final connectivityResult =
+        await _internetCubit.connectivity.checkConnectivity();
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      _isConnected = true;
+    } else {
+      _isConnected = false;
+    }
+    loadTrips();
+  }
+
   void loadTrips() async {
     if (_isConnected == true) {
       emit(HomeState.loading(
-        dateInterval: state.dateInterval,
+        selectedDateInterval: state.selectedDateInterval,
         isMenuOpened: state.isMenuOpened,
-        tripType: state.tripType,
+        selectedTripType: state.selectedTripType,
       ));
       _fetchrips();
     }
@@ -60,9 +73,9 @@ class HomeCubit extends Cubit<HomeState> with HydratedMixin {
         HomeState.loading(
           trips: trips,
           isRefreshing: true,
-          dateInterval: state.dateInterval,
+          selectedDateInterval: state.selectedDateInterval,
           isMenuOpened: state.isMenuOpened,
-          tripType: state.tripType,
+          selectedTripType: state.selectedTripType,
         ),
       );
       _fetchrips();
@@ -78,31 +91,31 @@ class HomeCubit extends Cubit<HomeState> with HydratedMixin {
   }
 
   void setTripType({required TripType tripType}) =>
-      emit(state.copyWith(tripType: tripType));
+      emit(state.copyWith(selectedTripType: tripType));
 
   void setDateInterval({required DateInterval? dateInterval}) =>
-      emit(state.copyWith(dateInterval: dateInterval));
+      emit(state.copyWith(selectedDateInterval: dateInterval));
 
   void _fetchrips() async {
-    final failureOrTrips = await _fetchTrips.call(Params(
-      type: state.tripType.title,
-      dateInterval: state.dateInterval,
+    final failureOrTrips = await _fetchTrips.call(FetchTripsParams(
+      type: state.selectedTripType.title,
+      dateInterval: state.selectedDateInterval,
     ));
     failureOrTrips.fold(
-      (failure) => emit(
+      (fault) => emit(
         HomeState.failure(
-          failure: failure,
-          dateInterval: state.dateInterval,
+          fault: fault,
+          selectedDateInterval: state.selectedDateInterval,
           isMenuOpened: state.isMenuOpened,
-          tripType: state.tripType,
+          selectedTripType: state.selectedTripType,
         ),
       ),
       (trips) => emit(
         HomeState.success(
           trips: trips,
-          dateInterval: state.dateInterval,
+          selectedDateInterval: state.selectedDateInterval,
           isMenuOpened: state.isMenuOpened,
-          tripType: state.tripType,
+          selectedTripType: state.selectedTripType,
         ),
       ),
     );
