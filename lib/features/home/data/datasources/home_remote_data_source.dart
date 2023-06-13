@@ -29,7 +29,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         return [];
       }
       if (type == 'Шале') {
-        throw 'Произошла ошибка';
+        throw 'Ошибка... Что-то пошло не так...';
       }
       return AppConstantData.trips;
       // final response = await dioClient.get('/trips');

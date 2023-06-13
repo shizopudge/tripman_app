@@ -20,7 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
       : _loginByPhone = loginByPhone,
         _loginByGoogle = loginByGoogle,
         _loginByApple = loginByApple,
-        super(const AuthState.initial());
+        super(const AuthState.loading());
 
   void init() async {
     await Future.delayed(const Duration(milliseconds: 2500));

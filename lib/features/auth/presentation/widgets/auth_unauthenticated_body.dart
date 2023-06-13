@@ -28,7 +28,7 @@ class AuthUnauthenticatedBody extends StatelessWidget {
           ),
           const Spacer(),
           FadeAnimationYUp(
-            delay: .5,
+            delay: .25,
             child: Container(
               alignment: Alignment.bottomCenter,
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),

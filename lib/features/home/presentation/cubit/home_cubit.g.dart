@@ -56,7 +56,7 @@ Map<String, dynamic> _$$_SuccessToJson(_$_Success instance) =>
       'runtimeType': instance.$type,
     };
 
-_$_Failure _$$_FailureFromJson(Map<String, dynamic> json) => _$_Failure(
+_$Failure _$$FailureFromJson(Map<String, dynamic> json) => _$Failure(
       selectedTripType:
           TripType.fromJson(json['selectedTripType'] as Map<String, dynamic>),
       selectedDateInterval: json['selectedDateInterval'] == null
@@ -72,8 +72,7 @@ _$_Failure _$$_FailureFromJson(Map<String, dynamic> json) => _$_Failure(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_FailureToJson(_$_Failure instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$FailureToJson(_$Failure instance) => <String, dynamic>{
       'selectedTripType': instance.selectedTripType,
       'selectedDateInterval': instance.selectedDateInterval,
       'isMenuOpened': instance.isMenuOpened,

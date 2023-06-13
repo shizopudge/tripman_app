@@ -17,7 +17,7 @@ class NotificationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeAnimationYDown(
-      delay: .4,
+      delay: 0,
       child: SimpleDialog(
         backgroundColor: kWhite,
         elevation: 0,

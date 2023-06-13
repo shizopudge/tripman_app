@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tripman/core/presentation/animations/fade_animation_x.dart';
 
 import '../../../../domain/entities/date_interval/date_interval.dart';
 import '../../../../styles/styles.dart';
@@ -45,29 +46,35 @@ class Calendar extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          DateFormatUtils.monthYear(
-                            year: month.year,
-                            month: month.month,
-                          ),
-                          style: kSFProDisplaySemiBold.copyWith(
-                            color: kBlack,
-                            fontSize: 18,
+                        FadeAnimationX(
+                          delay: .1,
+                          child: Text(
+                            DateFormatUtils.monthYear(
+                              year: month.year,
+                              month: month.month,
+                            ),
+                            style: kSFProDisplaySemiBold.copyWith(
+                              color: kBlack,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
-                        GridView.builder(
-                          itemCount: month.dateCells.length + 7,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 7,
-                            mainAxisSpacing: 6,
-                            crossAxisSpacing: 0,
-                          ),
-                          itemBuilder: (context, index) => Day(
-                            index: index,
-                            month: month,
+                        FadeAnimationX(
+                          delay: .15,
+                          child: GridView.builder(
+                            itemCount: month.dateCells.length + 7,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 7,
+                              mainAxisSpacing: 6,
+                              crossAxisSpacing: 0,
+                            ),
+                            itemBuilder: (context, index) => Day(
+                              index: index,
+                              month: month,
+                            ),
                           ),
                         ),
                       ],

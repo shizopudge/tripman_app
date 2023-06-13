@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/presentation/widgets/common/internet_listener.dart';
 
 import '../../../core/presentation/widgets/common/failure_body.dart';
+import '../../../core/presentation/widgets/common/internet_listener.dart';
 import '../../../core/presentation/widgets/common/loading_body.dart';
 import '../../../core/styles/styles.dart';
 import '../../code_verification/presentation/code_verification_screen.dart';

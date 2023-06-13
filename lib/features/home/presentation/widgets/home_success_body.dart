@@ -63,10 +63,12 @@ class HomeSuccessBody extends StatelessWidget {
                       ..onTap = () => PopupUtils.showCalendar(
                             context: context,
                             selectedDateInterval: selectedDateInterval,
-                            onDateIntervalChange: (dateInterval) =>
-                                context.read<HomeCubit>().setDateInterval(
-                                      dateInterval: dateInterval,
-                                    ),
+                            onDateIntervalChange: (dateInterval) {
+                              context.read<HomeCubit>().setDateInterval(
+                                    dateInterval: dateInterval,
+                                  );
+                              Navigator.of(context).pop();
+                            },
                           ),
                   ),
                 ],

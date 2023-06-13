@@ -50,7 +50,7 @@ class _ReviewDialogState extends State<ReviewDialog> {
   @override
   Widget build(BuildContext context) {
     return FadeAnimationYDown(
-      delay: .4,
+      delay: 0,
       child: SimpleDialog(
         elevation: 0,
         backgroundColor: kWhite,

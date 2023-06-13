@@ -31,12 +31,8 @@ class ConfirmationBanner extends StatelessWidget {
         boxShadow: const [
           BoxShadow(
             color: kBlack10,
-            blurRadius: 2.5,
-            spreadRadius: .5,
-            offset: Offset(
-              1,
-              2,
-            ),
+            blurRadius: 1.5,
+            spreadRadius: 1,
           ),
         ],
       ),
@@ -47,7 +43,7 @@ class ConfirmationBanner extends StatelessWidget {
               iconPath,
             ),
             const SizedBox(
-              width: 16,
+              height: 12,
             ),
             Text(
               text,

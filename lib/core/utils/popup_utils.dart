@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../constants/enums.dart';
 
+import '../constants/enums.dart';
 import '../domain/entities/date_interval/date_interval.dart';
 import '../error/failures/fault.dart';
 import '../presentation/widgets/bottom_sheet/sized_bottom_sheet.dart';
@@ -52,6 +52,34 @@ class PopupUtils {
             ),
           );
         },
+      );
+
+  static void showConfirmationBanner({
+    required BuildContext context,
+    required String iconPath,
+    required String text,
+    required String buttonText,
+    required VoidCallback onTap,
+  }) =>
+      ScaffoldMessenger.of(context).showMaterialBanner(
+        MaterialBanner(
+          backgroundColor: Colors.transparent,
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          dividerColor: Colors.transparent,
+          actions: const [
+            SizedBox(),
+          ],
+          content: ConfirmationBanner(
+            iconPath: iconPath,
+            text: text,
+            backgroundColor: kWhite,
+            onTap: () {
+              onTap();
+              ScaffoldMessenger.of(context).clearMaterialBanners();
+            },
+            buttonText: buttonText,
+          ),
+        ),
       );
 
   static void showBanner({
@@ -146,7 +174,7 @@ class PopupUtils {
   }) =>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           backgroundColor: backgroundColor,
           duration: duration,
           content: Row(

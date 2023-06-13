@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
-import '../../../core/presentation/widgets/common/internet_listener.dart';
 
 import '../../../core/domain/entities/request_screen_arguments/request_screen_arguments.dart';
 import '../../../core/domain/entities/trip/trip.dart';
+import '../../../core/presentation/widgets/common/internet_listener.dart';
 import '../../../core/presentation/widgets/common/not_found_body.dart';
 import '../../../core/styles/styles.dart';
 import '../../../core/utils/popup_utils.dart';

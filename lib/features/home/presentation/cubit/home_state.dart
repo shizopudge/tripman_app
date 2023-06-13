@@ -22,7 +22,7 @@ class HomeState with _$HomeState {
     required bool isMenuOpened,
     required Fault fault,
     @Default([]) List<Trip> trips,
-  }) = _Failure;
+  }) = Failure;
 
   factory HomeState.fromJson(Map<String, dynamic> json) =>
       _$HomeStateFromJson(json);

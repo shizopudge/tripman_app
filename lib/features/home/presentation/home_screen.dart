@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../core/constants/enums.dart';
-import '../../../core/error/failures/fault.dart';
-import '../../../core/presentation/widgets/common/internet_listener.dart';
-import '../../../core/utils/popup_utils.dart';
 
+import '../../../core/constants/enums.dart';
 import '../../../core/domain/entities/date_interval/date_interval.dart';
 import '../../../core/domain/entities/trip_type/trip_type.dart';
+import '../../../core/error/failures/fault.dart';
 import '../../../core/presentation/animations/fade_animation_y_up.dart';
 import '../../../core/presentation/widgets/buttons/rounded_border_button.dart';
+import '../../../core/presentation/widgets/common/internet_listener.dart';
 import '../../../core/styles/styles.dart';
+import '../../../core/utils/popup_utils.dart';
 import 'cubit/home_cubit.dart';
 import 'widgets/home_app_bar.dart';
-import 'widgets/home_failure_body.dart';
 import 'widgets/home_loading_body.dart';
 import 'widgets/home_success_body.dart';
 
@@ -43,11 +42,23 @@ class HomeScreen extends StatelessWidget {
         body: BlocConsumer<HomeCubit, HomeState>(
           listenWhen: (previous, current) =>
               current.selectedTripType != previous.selectedTripType ||
-              current.selectedDateInterval != previous.selectedDateInterval,
+              current.selectedDateInterval != previous.selectedDateInterval ||
+              current is Failure,
           listener: (context, state) {
-            context.read<HomeCubit>().loadTrips();
+            if (state is Failure) {
+              PopupUtils.showConfirmationBanner(
+                context: context,
+                iconPath: 'assets/icons/network.svg',
+                text: state.fault.message,
+                buttonText: 'Обновить',
+                onTap: () => context.read<HomeCubit>().loadTrips(),
+              );
+            } else {
+              ScaffoldMessenger.of(context).clearMaterialBanners();
+              context.read<HomeCubit>().loadTrips();
+            }
           },
-          builder: (context, state) => state.map(
+          builder: (context, state) => state.maybeMap(
             loading: (loadingState) => HomeLoadingBody(
                 trips: loadingState.trips,
                 isRefreshing: loadingState.isRefreshing),
@@ -55,8 +66,7 @@ class HomeScreen extends StatelessWidget {
               trips: successState.trips,
               selectedDateInterval: successState.selectedDateInterval,
             ),
-            failure: (failureState) =>
-                HomeFailureBody(fault: failureState.fault),
+            orElse: () => const SizedBox(),
           ),
         ),
         floatingActionButton: FadeAnimationYUp(

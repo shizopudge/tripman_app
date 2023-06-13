@@ -24,7 +24,7 @@ class AuthFailureBody extends StatelessWidget {
         children: [
           const Spacer(),
           FadeAnimation(
-            delay: 1,
+            delay: 0,
             child: FailureMessage(
               fault: fault,
               color: kWhite,
@@ -36,7 +36,7 @@ class AuthFailureBody extends StatelessWidget {
               bottom: 90,
             ),
             child: FadeAnimationYDown(
-              delay: 1,
+              delay: 0,
               child: InkWell(
                 onTap: () => context.read<AuthCubit>().refresh(),
                 borderRadius: BorderRadius.circular(20),

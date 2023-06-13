@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/presentation/widgets/common/internet_listener.dart';
 
 import '../../../core/domain/entities/date_interval/date_interval.dart';
 import '../../../core/domain/entities/trip/trip.dart';
 import '../../../core/presentation/widgets/common/failure_body.dart';
+import '../../../core/presentation/widgets/common/internet_listener.dart';
 import '../../../core/presentation/widgets/common/loading_body.dart';
 import '../../../core/presentation/widgets/dialogs/notification_dialog.dart';
 import '../../../core/presentation/widgets/dialogs/review_dialog.dart';

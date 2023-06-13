@@ -21,7 +21,7 @@ HomeState _$HomeStateFromJson(Map<String, dynamic> json) {
     case 'success':
       return _Success.fromJson(json);
     case 'failure':
-      return _Failure.fromJson(json);
+      return Failure.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'HomeState',
@@ -112,21 +112,21 @@ mixin _$HomeState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Failure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -437,7 +437,7 @@ class _$_Loading extends _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Failure value) failure,
   }) {
     return loading(this);
   }
@@ -447,7 +447,7 @@ class _$_Loading extends _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Failure value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -457,7 +457,7 @@ class _$_Loading extends _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -709,7 +709,7 @@ class _$_Success extends _Success {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Failure value) failure,
   }) {
     return success(this);
   }
@@ -719,7 +719,7 @@ class _$_Success extends _Success {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Failure value)? failure,
   }) {
     return success?.call(this);
   }
@@ -729,7 +729,7 @@ class _$_Success extends _Success {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -771,10 +771,9 @@ abstract class _Success extends HomeState {
 }
 
 /// @nodoc
-abstract class _$$_FailureCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
-      __$$_FailureCopyWithImpl<$Res>;
+abstract class _$$FailureCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory _$$FailureCopyWith(_$Failure value, $Res Function(_$Failure) then) =
+      __$$FailureCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -792,10 +791,10 @@ abstract class _$$_FailureCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_Failure>
-    implements _$$_FailureCopyWith<$Res> {
-  __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
+class __$$FailureCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$Failure>
+    implements _$$FailureCopyWith<$Res> {
+  __$$FailureCopyWithImpl(_$Failure _value, $Res Function(_$Failure) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -807,7 +806,7 @@ class __$$_FailureCopyWithImpl<$Res>
     Object? fault = null,
     Object? trips = null,
   }) {
-    return _then(_$_Failure(
+    return _then(_$Failure(
       selectedTripType: null == selectedTripType
           ? _value.selectedTripType
           : selectedTripType // ignore: cast_nullable_to_non_nullable
@@ -842,8 +841,8 @@ class __$$_FailureCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Failure extends _Failure {
-  const _$_Failure(
+class _$Failure extends Failure {
+  const _$Failure(
       {required this.selectedTripType,
       required this.selectedDateInterval,
       required this.isMenuOpened,
@@ -854,8 +853,8 @@ class _$_Failure extends _Failure {
         $type = $type ?? 'failure',
         super._();
 
-  factory _$_Failure.fromJson(Map<String, dynamic> json) =>
-      _$$_FailureFromJson(json);
+  factory _$Failure.fromJson(Map<String, dynamic> json) =>
+      _$$FailureFromJson(json);
 
   @override
   final TripType selectedTripType;
@@ -881,7 +880,7 @@ class _$_Failure extends _Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Failure &&
+            other is _$Failure &&
             (identical(other.selectedTripType, selectedTripType) ||
                 other.selectedTripType == selectedTripType) &&
             (identical(other.selectedDateInterval, selectedDateInterval) ||
@@ -905,8 +904,8 @@ class _$_Failure extends _Failure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
-      __$$_FailureCopyWithImpl<_$_Failure>(this, _$identity);
+  _$$FailureCopyWith<_$Failure> get copyWith =>
+      __$$FailureCopyWithImpl<_$Failure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1001,7 +1000,7 @@ class _$_Failure extends _Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Failure value) failure,
   }) {
     return failure(this);
   }
@@ -1011,7 +1010,7 @@ class _$_Failure extends _Failure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Failure value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -1021,7 +1020,7 @@ class _$_Failure extends _Failure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1032,22 +1031,22 @@ class _$_Failure extends _Failure {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FailureToJson(
+    return _$$FailureToJson(
       this,
     );
   }
 }
 
-abstract class _Failure extends HomeState {
-  const factory _Failure(
+abstract class Failure extends HomeState {
+  const factory Failure(
       {required final TripType selectedTripType,
       required final DateInterval? selectedDateInterval,
       required final bool isMenuOpened,
       required final Fault fault,
-      final List<Trip> trips}) = _$_Failure;
-  const _Failure._() : super._();
+      final List<Trip> trips}) = _$Failure;
+  const Failure._() : super._();
 
-  factory _Failure.fromJson(Map<String, dynamic> json) = _$_Failure.fromJson;
+  factory Failure.fromJson(Map<String, dynamic> json) = _$Failure.fromJson;
 
   @override
   TripType get selectedTripType;
@@ -1060,6 +1059,6 @@ abstract class _Failure extends HomeState {
   List<Trip> get trips;
   @override
   @JsonKey(ignore: true)
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+  _$$FailureCopyWith<_$Failure> get copyWith =>
       throw _privateConstructorUsedError;
 }
