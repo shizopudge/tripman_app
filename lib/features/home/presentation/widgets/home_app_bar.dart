@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../auth/presentation/cubit/auth_cubit.dart';
 
 import '../../../../core/constants/app_constant_data.dart';
 import '../../../../core/domain/entities/date_interval/date_interval.dart';
@@ -11,6 +10,8 @@ import '../../../../core/presentation/widgets/cards/trip_type_card.dart';
 import '../../../../core/presentation/widgets/dialogs/notification_dialog.dart';
 import '../../../../core/styles/styles.dart';
 import '../../../../core/utils/popup_utils.dart';
+import '../../../auth/presentation/cubit/auth_cubit.dart';
+import '../../../objects/presentation/objects_screen.dart';
 import '../cubit/home_cubit.dart';
 import 'date_interval_field.dart';
 
@@ -80,7 +81,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ],
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(ObjectsScreen.routeName),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             vertical:
@@ -164,13 +166,14 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                           child: DateIntervalField(
                             dateInterval: selectedDateInterval,
                             onTap: () => PopupUtils.showCalendar(
-                              context: context,
-                              selectedDateInterval: selectedDateInterval,
-                              onDateIntervalChange: (dateInterval) =>
+                                context: context,
+                                selectedDateInterval: selectedDateInterval,
+                                onDateIntervalChange: (dateInterval) {
                                   context.read<HomeCubit>().setDateInterval(
                                         dateInterval: dateInterval,
-                                      ),
-                            ),
+                                      );
+                                  Navigator.of(context).pop();
+                                }),
                             onClear: () => context
                                 .read<HomeCubit>()
                                 .setDateInterval(dateInterval: null),
@@ -203,10 +206,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           shrinkWrap: true,
-                          itemCount: LocalConstants.tripTypes.length,
+                          itemCount: AppConstantData.tripTypes.length,
                           itemBuilder: (context, index) {
                             final TripType tripType =
-                                LocalConstants.tripTypes[index];
+                                AppConstantData.tripTypes[index];
                             return TripTypeCard(
                               onTap: () => context
                                   .read<HomeCubit>()

@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 
-import '../../../styles/styles.dart';
 import '../../animations/fade_animation_y_down.dart';
 import 'loader.dart';
 
 class LoadingBody extends StatelessWidget {
-  const LoadingBody({super.key});
+  final Color color;
+  const LoadingBody({
+    super.key,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FadeAnimationYDown(
             delay: 0,
             child: Loader(
-              color: kBlack,
+              color: color,
             ),
           ),
         ],

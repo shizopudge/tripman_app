@@ -5,7 +5,7 @@ import '../../../styles/styles.dart';
 import '../buttons/rounded_text_button.dart';
 
 class MessageBanner extends StatelessWidget {
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String iconPath;
   final String text;
   final String buttonText;
@@ -15,8 +15,8 @@ class MessageBanner extends StatelessWidget {
     required this.iconPath,
     required this.text,
     required this.backgroundColor,
-    required this.onTap,
-    required this.buttonText,
+    this.onTap,
+    this.buttonText = 'Кнопка',
   });
 
   @override
@@ -36,6 +36,12 @@ class MessageBanner extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 iconPath,
+                height: 20,
+                width: 20,
+                colorFilter: const ColorFilter.mode(
+                  kWhite,
+                  BlendMode.srcIn,
+                ),
               ),
               const SizedBox(
                 width: 15,
@@ -51,15 +57,17 @@ class MessageBanner extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 16,
-          ),
-          RoundedTextButton(
-            isEnabled: true,
-            onTap: onTap,
-            text: buttonText,
-            invertColors: true,
-          ),
+          if (onTap != null)
+            const SizedBox(
+              height: 16,
+            ),
+          if (onTap != null)
+            RoundedTextButton(
+              isEnabled: true,
+              onTap: onTap,
+              text: buttonText,
+              invertColors: true,
+            ),
         ],
       ),
     );

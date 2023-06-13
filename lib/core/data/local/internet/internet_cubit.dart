@@ -21,27 +21,24 @@ class InternetCubit extends Cubit<InternetState> {
         connectivity.onConnectivityChanged.listen((connectivityResult) {
       if (connectivityResult == ConnectivityResult.wifi ||
           connectivityResult == ConnectivityResult.mobile) {
-        _emitInternedConnected();
+        emit(const InternetState.connected());
       } else {
-        _emitInternedDisconnected();
+        emit(const InternetState.disconnected());
       }
     });
   }
 
   void checkInternetConnection() async {
+    emit(const InternetState.loading());
     final ConnectivityResult connectivityResult =
         await connectivity.checkConnectivity();
     if (connectivityResult == ConnectivityResult.wifi ||
         connectivityResult == ConnectivityResult.mobile) {
-      _emitInternedConnected();
+      emit(const InternetState.connected());
     } else {
-      _emitInternedDisconnected();
+      emit(const InternetState.disconnected());
     }
   }
-
-  void _emitInternedConnected() => emit(const InternetState.connected());
-
-  void _emitInternedDisconnected() => emit(const InternetState.disconnected());
 
   @override
   Future<void> close() {

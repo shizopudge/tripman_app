@@ -19,6 +19,46 @@ class DateFormatUtils {
     };
   }
 
+  static String monthYear({
+    required int year,
+    required int month,
+  }) =>
+      '${_ruMonth(dateKind: DateKind.basic, month: month)} $year';
+
+  static String dateRange({
+    DateKind dateKind = DateKind.parent,
+    required DateInterval interval,
+    bool dublicateSameMonth = false,
+    bool withYear = false,
+    String spacer = '',
+  }) {
+    String intervalString = '';
+    final startDate = interval.start;
+    final endDate = interval.end;
+    if (dateKind == DateKind.parent) {
+      if (dublicateSameMonth == false) {
+        if (startDate.month == endDate.month) {
+          intervalString =
+              '${startDate.day}$spacer-$spacer${endDate.day} ${_ruMonth(dateKind: dateKind, month: startDate.month)}';
+        } else {
+          intervalString =
+              '${startDate.day} ${_ruMonth(dateKind: dateKind, month: startDate.month)}$spacer-$spacer${endDate.day} ${_ruMonth(dateKind: dateKind, month: endDate.month)}';
+        }
+      } else {
+        intervalString =
+            '${startDate.day} ${_ruMonth(dateKind: dateKind, month: startDate.month)}$spacer-$spacer${endDate.day} ${_ruMonth(dateKind: dateKind, month: endDate.month)}';
+      }
+      if (withYear) {
+        if (startDate.year == endDate.year) {
+          intervalString += ' ${startDate.year}';
+        } else {
+          intervalString += ' ${startDate.year}$spacer-$spacer${endDate.year}';
+        }
+      }
+    }
+    return intervalString;
+  }
+
   static String _ruMonth({
     required DateKind dateKind,
     required int month,
@@ -59,45 +99,5 @@ class DateFormatUtils {
       };
       return ruMonth;
     }
-  }
-
-  static String monthYear({
-    required int year,
-    required int month,
-  }) =>
-      '${_ruMonth(dateKind: DateKind.basic, month: month)} $year';
-
-  static String dateRange({
-    DateKind dateKind = DateKind.parent,
-    required DateInterval interval,
-    bool dublicateSameMonth = false,
-    bool withYear = false,
-    String spacer = '',
-  }) {
-    String intervalString = '';
-    final startDate = interval.start;
-    final endDate = interval.end;
-    if (dateKind == DateKind.parent) {
-      if (dublicateSameMonth == false) {
-        if (startDate.month == endDate.month) {
-          intervalString =
-              '${startDate.day}$spacer-$spacer${endDate.day} ${_ruMonth(dateKind: dateKind, month: startDate.month)}';
-        } else {
-          intervalString =
-              '${startDate.day} ${_ruMonth(dateKind: dateKind, month: startDate.month)}$spacer-$spacer${endDate.day} ${_ruMonth(dateKind: dateKind, month: endDate.month)}';
-        }
-      } else {
-        intervalString =
-            '${startDate.day} ${_ruMonth(dateKind: dateKind, month: startDate.month)}$spacer-$spacer${endDate.day} ${_ruMonth(dateKind: dateKind, month: endDate.month)}';
-      }
-      if (withYear) {
-        if (startDate.year == endDate.year) {
-          intervalString += ' ${startDate.year}';
-        } else {
-          intervalString += ' ${startDate.year}$spacer-$spacer${endDate.year}';
-        }
-      }
-    }
-    return intervalString;
   }
 }

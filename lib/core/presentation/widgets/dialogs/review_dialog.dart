@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../bottom_sheet/scaffold_bottom_sheet.dart';
-import '../common/comment_text_field.dart';
 
 import '../../../styles/styles.dart';
 import '../../../utils/popup_utils.dart';
 import '../../animations/fade_animation_y_down.dart';
+import '../bottom_sheet/scaffold_bottom_sheet.dart';
 import '../buttons/close_button.dart';
 import '../buttons/rounded_text_button.dart';
+import '../common/comment_text_field.dart';
 import '../common/default_text_field.dart';
 
 class ReviewDialog extends StatefulWidget {

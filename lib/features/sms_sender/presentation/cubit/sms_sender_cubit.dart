@@ -11,28 +11,32 @@ class SmsSenderCubit extends Cubit<SmsSenderState> {
   final SendSmsVerificationCode _sendSmsVerificationCode;
   SmsSenderCubit({required SendSmsVerificationCode sendSmsVerificationCode})
       : _sendSmsVerificationCode = sendSmsVerificationCode,
-        super(const SmsSenderState.input());
+        super(const SmsSenderState());
 
   void phoneChange({required String phoneNumber, required bool isCorrect}) =>
-      emit(
-          SmsSenderState.input(phoneNumber: phoneNumber, isCorrect: isCorrect));
+      emit(state.copyWith(
+          phoneNumber: phoneNumber,
+          isCorrect: isCorrect,
+          status: SmsSenderStatus.input));
 
   void sendVerificationCode({bool isFirstTime = true}) async {
-    final String phoneNumber = state.phoneNumber;
-    emit(SmsSenderState.loading(phoneNumber: phoneNumber));
+    emit(state.copyWith(status: SmsSenderStatus.loading));
     final result = await _sendSmsVerificationCode
-        .call(SendSmsVerificationCodeParams(phoneNumber: phoneNumber));
+        .call(SendSmsVerificationCodeParams(phoneNumber: state.phoneNumber));
     result.fold(
       (fault) => emit(
-        SmsSenderState.failure(fault: fault, phoneNumber: phoneNumber),
+        state.copyWith(
+          status: SmsSenderStatus.failure,
+          fault: fault,
+        ),
       ),
-      (smsVerificationCode) => emit(SmsSenderState.success(
+      (smsVerificationCode) => emit(state.copyWith(
+        status: SmsSenderStatus.success,
         smsVerificationCode: smsVerificationCode,
-        phoneNumber: phoneNumber,
         isFirstTime: isFirstTime,
       )),
     );
   }
 
-  void refresh() => emit(const SmsSenderState.input());
+  void refresh() => emit(const SmsSenderState());
 }

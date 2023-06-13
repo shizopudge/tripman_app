@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CodeVerificationState {
   String get smsCode => throw _privateConstructorUsedError;
-  bool get isConfirmed => throw _privateConstructorUsedError;
-  bool get isIncorrect => throw _privateConstructorUsedError;
+  CodeVerificationStatus get status => throw _privateConstructorUsedError;
   int get secondsBeforeNextCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,8 +33,7 @@ abstract class $CodeVerificationStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String smsCode,
-      bool isConfirmed,
-      bool isIncorrect,
+      CodeVerificationStatus status,
       int secondsBeforeNextCode});
 }
 
@@ -54,8 +52,7 @@ class _$CodeVerificationStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? smsCode = null,
-    Object? isConfirmed = null,
-    Object? isIncorrect = null,
+    Object? status = null,
     Object? secondsBeforeNextCode = null,
   }) {
     return _then(_value.copyWith(
@@ -63,14 +60,10 @@ class _$CodeVerificationStateCopyWithImpl<$Res,
           ? _value.smsCode
           : smsCode // ignore: cast_nullable_to_non_nullable
               as String,
-      isConfirmed: null == isConfirmed
-          ? _value.isConfirmed
-          : isConfirmed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isIncorrect: null == isIncorrect
-          ? _value.isIncorrect
-          : isIncorrect // ignore: cast_nullable_to_non_nullable
-              as bool,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CodeVerificationStatus,
       secondsBeforeNextCode: null == secondsBeforeNextCode
           ? _value.secondsBeforeNextCode
           : secondsBeforeNextCode // ignore: cast_nullable_to_non_nullable
@@ -89,8 +82,7 @@ abstract class _$$_CodeVerificationStateCopyWith<$Res>
   @useResult
   $Res call(
       {String smsCode,
-      bool isConfirmed,
-      bool isIncorrect,
+      CodeVerificationStatus status,
       int secondsBeforeNextCode});
 }
 
@@ -106,8 +98,7 @@ class __$$_CodeVerificationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? smsCode = null,
-    Object? isConfirmed = null,
-    Object? isIncorrect = null,
+    Object? status = null,
     Object? secondsBeforeNextCode = null,
   }) {
     return _then(_$_CodeVerificationState(
@@ -115,14 +106,10 @@ class __$$_CodeVerificationStateCopyWithImpl<$Res>
           ? _value.smsCode
           : smsCode // ignore: cast_nullable_to_non_nullable
               as String,
-      isConfirmed: null == isConfirmed
-          ? _value.isConfirmed
-          : isConfirmed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isIncorrect: null == isIncorrect
-          ? _value.isIncorrect
-          : isIncorrect // ignore: cast_nullable_to_non_nullable
-              as bool,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CodeVerificationStatus,
       secondsBeforeNextCode: null == secondsBeforeNextCode
           ? _value.secondsBeforeNextCode
           : secondsBeforeNextCode // ignore: cast_nullable_to_non_nullable
@@ -136,8 +123,7 @@ class __$$_CodeVerificationStateCopyWithImpl<$Res>
 class _$_CodeVerificationState implements _CodeVerificationState {
   const _$_CodeVerificationState(
       {this.smsCode = '',
-      this.isConfirmed = false,
-      this.isIncorrect = false,
+      this.status = CodeVerificationStatus.input,
       this.secondsBeforeNextCode = 35});
 
   @override
@@ -145,17 +131,14 @@ class _$_CodeVerificationState implements _CodeVerificationState {
   final String smsCode;
   @override
   @JsonKey()
-  final bool isConfirmed;
-  @override
-  @JsonKey()
-  final bool isIncorrect;
+  final CodeVerificationStatus status;
   @override
   @JsonKey()
   final int secondsBeforeNextCode;
 
   @override
   String toString() {
-    return 'CodeVerificationState(smsCode: $smsCode, isConfirmed: $isConfirmed, isIncorrect: $isIncorrect, secondsBeforeNextCode: $secondsBeforeNextCode)';
+    return 'CodeVerificationState(smsCode: $smsCode, status: $status, secondsBeforeNextCode: $secondsBeforeNextCode)';
   }
 
   @override
@@ -164,17 +147,14 @@ class _$_CodeVerificationState implements _CodeVerificationState {
         (other.runtimeType == runtimeType &&
             other is _$_CodeVerificationState &&
             (identical(other.smsCode, smsCode) || other.smsCode == smsCode) &&
-            (identical(other.isConfirmed, isConfirmed) ||
-                other.isConfirmed == isConfirmed) &&
-            (identical(other.isIncorrect, isIncorrect) ||
-                other.isIncorrect == isIncorrect) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.secondsBeforeNextCode, secondsBeforeNextCode) ||
                 other.secondsBeforeNextCode == secondsBeforeNextCode));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, smsCode, isConfirmed, isIncorrect, secondsBeforeNextCode);
+  int get hashCode =>
+      Object.hash(runtimeType, smsCode, status, secondsBeforeNextCode);
 
   @JsonKey(ignore: true)
   @override
@@ -187,16 +167,13 @@ class _$_CodeVerificationState implements _CodeVerificationState {
 abstract class _CodeVerificationState implements CodeVerificationState {
   const factory _CodeVerificationState(
       {final String smsCode,
-      final bool isConfirmed,
-      final bool isIncorrect,
+      final CodeVerificationStatus status,
       final int secondsBeforeNextCode}) = _$_CodeVerificationState;
 
   @override
   String get smsCode;
   @override
-  bool get isConfirmed;
-  @override
-  bool get isIncorrect;
+  CodeVerificationStatus get status;
   @override
   int get secondsBeforeNextCode;
   @override

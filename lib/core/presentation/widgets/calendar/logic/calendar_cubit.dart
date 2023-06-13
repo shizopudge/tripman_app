@@ -5,8 +5,8 @@ import '../../../../domain/entities/date_interval/date_interval.dart';
 import '../entities/month.dart';
 
 class CalendarCubit extends Cubit<DateInterval?> {
-  final DateInterval? availableRange;
-  CalendarCubit({this.availableRange}) : super(null);
+  final List<DateInterval>? availableRanges;
+  CalendarCubit({this.availableRanges}) : super(null);
 
   void init(DateInterval? selectedDateInterval) {
     if (selectedDateInterval != null) {
@@ -22,15 +22,33 @@ class CalendarCubit extends Cubit<DateInterval?> {
       } else if (selectedDateInterval.end.isAtSameMomentAs(date)) {
         emit(DateInterval(start: date, end: date));
       } else if (selectedDateInterval.start.isAfter(date)) {
-        emit(DateInterval(
+        final newDateInterval = DateInterval(
           start: date,
           end: selectedDateInterval.end,
-        ));
+        );
+        if (availableRanges != null) {
+          if (_isPointsInTheSameRange(newDateInterval)) {
+            emit(newDateInterval);
+          } else {
+            emit(DateInterval(start: date, end: date));
+          }
+        } else {
+          emit(newDateInterval);
+        }
       } else {
-        emit(DateInterval(
+        final newDateInterval = DateInterval(
           start: selectedDateInterval.start,
           end: date,
-        ));
+        );
+        if (availableRanges != null) {
+          if (_isPointsInTheSameRange(newDateInterval)) {
+            emit(newDateInterval);
+          } else {
+            emit(DateInterval(start: date, end: date));
+          }
+        } else {
+          emit(newDateInterval);
+        }
       }
     } else {
       emit(DateInterval(start: date, end: date));
@@ -113,15 +131,18 @@ class CalendarCubit extends Cubit<DateInterval?> {
       }
     }
 
-    if (availableRange != null) {
+    if (availableRanges != null) {
       availableDates = [];
-      final start = availableRange!.start;
-      final end = availableRange!.end;
-      for (int i = 0; i <= end.difference(start).inDays; i++) {
-        final date = DateTime(start.year, start.month, start.day + i);
-        availableDates.add(date);
+      for (DateInterval range in availableRanges!) {
+        final start = range.start;
+        final end = range.end;
+        for (int i = 0; i <= end.difference(start).inDays; i++) {
+          final date = DateTime(start.year, start.month, start.day + i);
+          availableDates.add(date);
+        }
       }
     }
+
     if (index == 0) {
       pastDays = [];
       final beforeDate =
@@ -155,4 +176,20 @@ class CalendarCubit extends Cubit<DateInterval?> {
   }
 
   bool isWeekday(int index) => index <= 6;
+
+  bool _isPointsInTheSameRange(DateInterval newDateInterval) {
+    final Set<DateTime> datesRange = {};
+    for (DateInterval range in availableRanges!) {
+      datesRange.clear();
+      for (int i = 0; i <= range.end.difference(range.start).inDays; i++) {
+        datesRange.add(
+            DateTime(range.start.year, range.start.month, range.start.day + i));
+      }
+      if (datesRange.contains(newDateInterval.start) &&
+          datesRange.contains(newDateInterval.end)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

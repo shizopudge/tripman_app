@@ -1,9 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import '../../features/request/data/datasources/request_remote_data_source.dart';
-import '../../features/request/data/repositories/request_repository_impl.dart';
-import '../../features/request/domain/usecases/send_request.dart';
 
 import '../../features/auth/data/datasources/auth_remote_data_source.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
@@ -14,6 +11,9 @@ import '../../features/auth/presentation/cubit/auth_cubit.dart';
 import '../../features/home/data/datasources/home_remote_data_source.dart';
 import '../../features/home/data/repositories/home_repository_impl.dart';
 import '../../features/home/domain/usecases/fetch_trips.dart';
+import '../../features/request/data/datasources/request_remote_data_source.dart';
+import '../../features/request/data/repositories/request_repository_impl.dart';
+import '../../features/request/domain/usecases/send_request.dart';
 import '../../features/sms_sender/data/datasources/sms_sender_remote_data_source.dart';
 import '../../features/sms_sender/data/repositories/sms_sender_repository_impl.dart';
 import '../../features/sms_sender/domain/usecases/send_verification_code.dart';

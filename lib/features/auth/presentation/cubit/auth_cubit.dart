@@ -23,8 +23,8 @@ class AuthCubit extends Cubit<AuthState> {
         super(const AuthState.initial());
 
   void init() async {
-    await Future.delayed(const Duration(milliseconds: 1500));
-    emit(const AuthState.loaded());
+    await Future.delayed(const Duration(milliseconds: 2500));
+    emit(const AuthState.unauthenticated());
   }
 
   void loginByPhone() async {
@@ -48,5 +48,5 @@ class AuthCubit extends Cubit<AuthState> {
         (r) => emit(const AuthState.authenticated()));
   }
 
-  void refresh() => emit(const AuthState.loaded());
+  void refresh() => emit(const AuthState.unauthenticated());
 }

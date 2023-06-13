@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../core/presentation/animations/fade_animation_y_up.dart';
 
-import '../../../../core/styles/styles.dart';
+import '../../../../core/presentation/animations/fade_animation_y_up.dart';
 import '../../../../core/presentation/widgets/buttons/rounded_text_button.dart';
+import '../../../../core/styles/styles.dart';
 
 class TripFooter extends StatelessWidget {
   final VoidCallback onTap;

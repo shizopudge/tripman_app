@@ -11,8 +11,8 @@ import '../../../../core/styles/styles.dart';
 import '../../../sms_sender/presentation/sms_sender_screen.dart';
 import '../cubit/auth_cubit.dart';
 
-class AuthLoadedBody extends StatelessWidget {
-  const AuthLoadedBody({super.key});
+class AuthUnauthenticatedBody extends StatelessWidget {
+  const AuthUnauthenticatedBody({super.key});
 
   @override
   Widget build(BuildContext context) {

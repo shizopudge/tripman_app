@@ -12,6 +12,6 @@ class SmsSenderRemoteDataSourceImpl implements SmsSenderRemoteDataSource {
   @override
   Future<String> sendVerificationCode(String phoneNumber) async {
     await Future.delayed(const Duration(milliseconds: 1500));
-    return '5555';
+    throw '5555';
   }
 }

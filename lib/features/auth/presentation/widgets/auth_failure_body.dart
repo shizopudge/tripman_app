@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../core/styles/styles.dart';
 
 import '../../../../core/error/failures/fault.dart';
 import '../../../../core/presentation/animations/fade_animation.dart';
 import '../../../../core/presentation/animations/fade_animation_y_down.dart';
 import '../../../../core/presentation/widgets/common/failure_message.dart';
+import '../../../../core/styles/styles.dart';
 import '../cubit/auth_cubit.dart';
 
 class AuthFailureBody extends StatelessWidget {

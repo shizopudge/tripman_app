@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 
 import 'core/data/local/internet/internet_cubit.dart';
 import 'core/di/service_locator.dart';
-import 'core/styles/styles.dart';
 import 'core/utils/app_router.dart';
-import 'core/utils/popup_utils.dart';
 import 'features/auth/presentation/cubit/auth_cubit.dart';
 
 class App extends StatelessWidget {
@@ -27,31 +24,14 @@ class App extends StatelessWidget {
           create: (_) => getIt<AuthCubit>()..init(),
         ),
       ],
-      child: BlocListener<InternetCubit, InternetState>(
-        listener: (context, state) => state.whenOrNull(
-          disconnected: () => PopupUtils.showGlobalSnackBar(
-            context: context,
-            messageText: const Text(
-              'Нет соединения с интернетом.',
-              style: kSFProDisplayMedium,
-            ),
-            icon: const Icon(
-              Icons.wifi_off,
-              color: kWhite,
-            ),
-            color: kRed,
-          ),
-          connected: () => Get.closeCurrentSnackbar(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: const ColorScheme.dark(),
+          fontFamily: 'SF-Pro-Display',
+          useMaterial3: true,
         ),
-        child: GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: const ColorScheme.dark(),
-            fontFamily: 'SF-Pro-Display',
-            useMaterial3: true,
-          ),
-          onGenerateRoute: getIt<AppRouter>().onGenerateRoute,
-        ),
+        onGenerateRoute: getIt<AppRouter>().onGenerateRoute,
       ),
     );
   }

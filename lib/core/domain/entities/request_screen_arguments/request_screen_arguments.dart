@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../date_interval/date_interval.dart';
 import '../trip/trip.dart';
 

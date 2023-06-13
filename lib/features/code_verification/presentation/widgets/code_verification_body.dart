@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/utils/popup_utils.dart';
-import '../../../auth/presentation/cubit/auth_cubit.dart';
-import '../../../sms_sender/presentation/cubit/sms_sender_cubit.dart';
 
 import '../../../../core/presentation/animations/fade_animation_y_down.dart';
 import '../../../../core/presentation/widgets/buttons/rounded_border_button.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../core/utils/popup_utils.dart';
+import '../../../auth/presentation/cubit/auth_cubit.dart';
+import '../../../sms_sender/presentation/cubit/sms_sender_cubit.dart';
 import '../cubit/code_verification_cubit.dart';
 import 'sms_code_field.dart';
 
@@ -40,9 +40,9 @@ class _CodeVerificationBodyState extends State<CodeVerificationBody> {
     return MultiBlocListener(
       listeners: [
         BlocListener<CodeVerificationCubit, CodeVerificationState>(
-          listenWhen: (previous, current) => current.isConfirmed == true,
+          listenWhen: (previous, current) => current.status.isConfirmed,
           listener: (context, state) {
-            if (state.isConfirmed) {
+            if (state.status.isConfirmed) {
               _smsCodeFocus.unfocus();
               context.read<SmsSenderCubit>().refresh();
               context.read<AuthCubit>().loginByPhone();
@@ -53,17 +53,13 @@ class _CodeVerificationBodyState extends State<CodeVerificationBody> {
         ),
         BlocListener<SmsSenderCubit, SmsSenderState>(
           listener: (context, state) {
-            if (state is SmsSenderFailure) {
-              PopupUtils.showSnackBar(
+            if (state.status.isFailure) {
+              PopupUtils.showSnackBarMessage(
                 context: context,
-                color: kBlack,
-                content: Text(
-                  state.fault.message,
-                  style: kSFProDisplayMedium.copyWith(
-                    fontSize: 16,
-                    color: kWhite,
-                  ),
-                ),
+                backgroundColor: kRed,
+                iconColor: kWhite,
+                iconPath: 'assets/icons/error.svg',
+                text: state.fault.message,
               );
             }
           },
@@ -107,7 +103,7 @@ class _CodeVerificationBodyState extends State<CodeVerificationBody> {
                           return FadeAnimationYDown(
                             delay: .4,
                             child: SmsCodeField(
-                              isIncorrectCode: state.isIncorrect,
+                              isIncorrectCode: state.status.isIncorrect,
                               padding: state.smsCode.isEmpty
                                   ? const EdgeInsets.symmetric(horizontal: 48)
                                   : state.smsCode.length < 4

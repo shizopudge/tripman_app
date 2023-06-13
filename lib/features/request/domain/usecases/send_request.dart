@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import '../repositories/request_repository.dart';
 
 import '../../../../core/constants/type_defs.dart';
 import '../../../../core/domain/usecases/usecase.dart';
+import '../repositories/request_repository.dart';
 
 class SendRequest implements UseCase<void, SendRequestParams> {
   final RequestRepository repository;

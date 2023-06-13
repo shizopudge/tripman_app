@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
+import '../../../core/presentation/widgets/common/internet_listener.dart';
 
 import '../../../core/domain/entities/request_screen_arguments/request_screen_arguments.dart';
 import '../../../core/domain/entities/trip/trip.dart';
+import '../../../core/presentation/widgets/common/not_found_body.dart';
 import '../../../core/styles/styles.dart';
 import '../../../core/utils/popup_utils.dart';
 import '../../request/presentation/request_screen.dart';
@@ -26,37 +28,46 @@ class TripScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kWhite,
-      extendBodyBehindAppBar: true,
-      appBar: const TripAppbar(),
-      body: TripBody(
-        trip: trip,
-        carouselController: _carouselController,
-        currentImageNotifier: _currentImageNotifier,
-      ),
-      persistentFooterAlignment: AlignmentDirectional.center,
-      persistentFooterButtons: [
-        TripFooter(
-          onTap: () => PopupUtils.showCalendar(
-            context: context,
-            selectedDateInterval: null,
-            onDateIntervalChange: (dateInterval) => Future.delayed(
-              Duration.zero,
-              () => Navigator.of(context).pushNamed(
-                RequestScreen.routeName,
-                arguments: RequestScreenArguments(
-                  trip: trip,
-                  dateInterval: dateInterval,
-                ),
+    //! Hard coded trip not found page
+    return InternetListener(
+      child: Scaffold(
+        backgroundColor: kWhite,
+        extendBodyBehindAppBar: true,
+        appBar: TripAppbar(
+          iconColor: trip.id == '2' ? kBlack : kWhite,
+        ),
+        body: trip.id == '2'
+            ? const NotFoundBody()
+            : TripBody(
+                trip: trip,
+                carouselController: _carouselController,
+                currentImageNotifier: _currentImageNotifier,
               ),
-            ),
-          ),
-          cost: trip.minCost,
-          minMembersCount: trip.minMembersCount,
-          maxMembersCount: trip.maxMembersCount,
-        )
-      ],
+        persistentFooterAlignment: AlignmentDirectional.center,
+        persistentFooterButtons: trip.id == '2'
+            ? null
+            : [
+                TripFooter(
+                  onTap: () => PopupUtils.showCalendar(
+                    context: context,
+                    availableRanges: trip.dateIntervals,
+                    onDateIntervalChange: (dateInterval) =>
+                        Navigator.of(context)
+                          ..pop()
+                          ..pushNamed(
+                            RequestScreen.routeName,
+                            arguments: RequestScreenArguments(
+                              trip: trip,
+                              dateInterval: dateInterval,
+                            ),
+                          ),
+                  ),
+                  cost: trip.minCost,
+                  minMembersCount: trip.minMembersCount,
+                  maxMembersCount: trip.maxMembersCount,
+                )
+              ],
+      ),
     );
   }
 }

@@ -163,7 +163,7 @@ class _$_RequestState implements _RequestState {
       {this.phoneNumber = '',
       this.comment = '',
       this.isPhoneNumberCorrect = false,
-      this.status = RequestStatus.input,
+      this.status = RequestStatus.initial,
       this.fault = const UnknownFault()});
 
   @override

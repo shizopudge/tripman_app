@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../domain/usecases/send_request.dart';
 
 import '../../../../core/error/failures/fault.dart';
+import '../../domain/usecases/send_request.dart';
 
-part 'request_state.dart';
 part 'request_cubit.freezed.dart';
+part 'request_state.dart';
 
 class RequestCubit extends Cubit<RequestState> {
   final SendRequest _sendRequest;

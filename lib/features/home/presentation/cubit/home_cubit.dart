@@ -122,12 +122,7 @@ class HomeCubit extends Cubit<HomeState> with HydratedMixin {
   }
 
   @override
-  HomeState? fromJson(Map<String, dynamic> json) {
-    if (_isConnected == false) {
-      return HomeState.fromJson(json);
-    }
-    return null;
-  }
+  HomeState? fromJson(Map<String, dynamic> json) => HomeState.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson(HomeState state) {

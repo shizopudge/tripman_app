@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../domain/entities/trip_screen_arguments/trip_screen_arguments.dart';
-import '../../../../features/trip/presentation/trip_screen.dart';
 
+import '../../../../features/trip/presentation/trip_screen.dart';
 import '../../../domain/entities/trip/trip.dart';
+import '../../../domain/entities/trip_screen_arguments/trip_screen_arguments.dart';
 import '../../../styles/styles.dart';
 import '../../../utils/date_format_utils.dart';
 import '../buttons/rounded_border_button.dart';

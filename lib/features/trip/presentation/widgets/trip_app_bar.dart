@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/presentation/animations/fade_animation_y_down.dart';
-import '../../../../core/styles/styles.dart';
 
 class TripAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const TripAppbar({super.key});
+  final Color iconColor;
+  const TripAppbar({
+    super.key,
+    required this.iconColor,
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(48);
@@ -23,8 +26,8 @@ class TripAppbar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () => Navigator.of(context).pop(),
             icon: SvgPicture.asset(
               'assets/icons/arrow_back.svg',
-              colorFilter: const ColorFilter.mode(
-                kWhite,
+              colorFilter: ColorFilter.mode(
+                iconColor,
                 BlendMode.srcIn,
               ),
             ),

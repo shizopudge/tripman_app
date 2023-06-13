@@ -13,6 +13,7 @@ import 'day.dart';
 
 class Calendar extends StatelessWidget {
   final int monthCount;
+  final List<DateInterval>? availableRanges;
   final DateInterval? selectedDateInterval;
   final void Function(DateInterval) onDateIntervalChange;
   const Calendar({
@@ -20,12 +21,14 @@ class Calendar extends StatelessWidget {
     this.monthCount = 12,
     required this.selectedDateInterval,
     required this.onDateIntervalChange,
+    required this.availableRanges,
   });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CalendarCubit>(
-      create: (_) => CalendarCubit()..init(selectedDateInterval),
+      create: (_) => CalendarCubit(availableRanges: availableRanges)
+        ..init(selectedDateInterval),
       child: Flexible(
         child: Column(
           children: [
@@ -111,7 +114,6 @@ class Calendar extends StatelessWidget {
                         if (selectedCalendarDateInterval !=
                             selectedDateInterval) {
                           onDateIntervalChange(selectedCalendarDateInterval!);
-                          Navigator.of(context).pop();
                         }
                       },
                     ),

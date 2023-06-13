@@ -4,7 +4,7 @@ part of 'home_cubit.dart';
 class HomeState with _$HomeState {
   const HomeState._();
   const factory HomeState.loading({
-    @Default(LocalConstants.defaultTripType) TripType selectedTripType,
+    @Default(AppConstantData.defaultTripType) TripType selectedTripType,
     @Default(null) DateInterval? selectedDateInterval,
     @Default(false) bool isMenuOpened,
     @Default(false) bool isRefreshing,

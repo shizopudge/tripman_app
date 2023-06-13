@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import '../../../../core/domain/entities/date_interval/date_interval.dart';
-import '../cubit/request_cubit.dart';
 
+import '../../../../core/domain/entities/date_interval/date_interval.dart';
 import '../../../../core/domain/entities/trip/trip.dart';
 import '../../../../core/presentation/animations/fade_animation_y_down.dart';
 import '../../../../core/presentation/animations/fade_animation_y_up.dart';
@@ -14,6 +13,7 @@ import '../../../../core/presentation/widgets/common/comment_text_field.dart';
 import '../../../../core/presentation/widgets/common/default_text_field.dart';
 import '../../../../core/styles/styles.dart';
 import '../../../../core/utils/popup_utils.dart';
+import '../cubit/request_cubit.dart';
 
 class RequestBody extends StatefulWidget {
   final Trip trip;

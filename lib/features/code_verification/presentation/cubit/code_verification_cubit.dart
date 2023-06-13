@@ -22,7 +22,7 @@ class CodeVerificationCubit extends Cubit<CodeVerificationState> {
 
   void monitorSmsVerificationCode() => _smsSenderCubitStreamSubscription =
           _smsSenderCubit.stream.listen((smsSenderState) {
-        if (smsSenderState is SmsSenderSuccess) {
+        if (smsSenderState.status.isSuccess) {
           verificationCode = smsSenderState.smsVerificationCode;
         }
       });
@@ -30,7 +30,7 @@ class CodeVerificationCubit extends Cubit<CodeVerificationState> {
   void init() {
     _timer = Timer.periodic(const Duration(milliseconds: 1000), _onTick);
     final smsSenderState = _smsSenderCubit.state;
-    if (smsSenderState is SmsSenderSuccess) {
+    if (smsSenderState.status.isSuccess) {
       verificationCode = smsSenderState.smsVerificationCode;
     }
   }
@@ -46,14 +46,14 @@ class CodeVerificationCubit extends Cubit<CodeVerificationState> {
     if (smsCode.length == 4) {
       if (smsCode == verificationCode) {
         emit(state.copyWith(
-            smsCode: smsCode, isConfirmed: true, isIncorrect: false));
+            smsCode: smsCode, status: CodeVerificationStatus.confirmed));
       } else {
         emit(state.copyWith(
-            smsCode: smsCode, isConfirmed: false, isIncorrect: true));
+            smsCode: smsCode, status: CodeVerificationStatus.incorrect));
       }
     } else {
       emit(state.copyWith(
-          smsCode: smsCode, isConfirmed: false, isIncorrect: false));
+          smsCode: smsCode, status: CodeVerificationStatus.input));
     }
   }
 

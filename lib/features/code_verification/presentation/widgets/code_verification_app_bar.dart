@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../core/presentation/animations/fade_animation_y_down.dart';
 
+import '../../../../core/presentation/animations/fade_animation_y_down.dart';
 import '../../../sms_sender/presentation/cubit/sms_sender_cubit.dart';
 
 class CodeVerificationAppBar extends StatelessWidget

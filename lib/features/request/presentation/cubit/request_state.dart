@@ -1,12 +1,12 @@
 part of 'request_cubit.dart';
 
 enum RequestStatus {
-  input,
+  initial,
   loading,
   success,
   failure;
 
-  bool get isInput => this == RequestStatus.input;
+  bool get isInput => this == RequestStatus.initial;
   bool get isLoading => this == RequestStatus.loading;
   bool get isSuccess => this == RequestStatus.success;
   bool get isFailure => this == RequestStatus.failure;
@@ -18,7 +18,7 @@ class RequestState with _$RequestState {
     @Default('') String phoneNumber,
     @Default('') String comment,
     @Default(false) bool isPhoneNumberCorrect,
-    @Default(RequestStatus.input) RequestStatus status,
+    @Default(RequestStatus.initial) RequestStatus status,
     @Default(UnknownFault()) Fault fault,
   }) = _RequestState;
 }

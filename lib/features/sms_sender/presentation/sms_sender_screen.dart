@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/presentation/widgets/common/internet_listener.dart';
 
 import '../../../core/presentation/widgets/common/failure_body.dart';
 import '../../../core/presentation/widgets/common/loading_body.dart';
@@ -16,37 +17,40 @@ class SmsSenderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kWhite,
-      appBar: const SmsSenderAppBar(),
-      body: BlocConsumer<SmsSenderCubit, SmsSenderState>(
-        listener: (context, state) {
-          state.whenOrNull(
-            success: (smsVerificationCode, phoneNumber, isFirstTime) {
-              if (isFirstTime) {
-                Navigator.of(context).pushNamed(
-                  CodeVerificationScreen.routeName,
-                );
-              }
-            },
-          );
-        },
-        builder: (context, state) {
-          return state.maybeMap(
-            loading: (_) => const LoadingBody(),
-            input: (inputState) => SmsSenderBody(
-              phoneNumber: inputState.phoneNumber,
-              isCorrect: inputState.isCorrect,
-            ),
-            failure: (failureState) => FailureBody(
-              onTap: () => context.read<SmsSenderCubit>().refresh(),
-              fault: failureState.fault,
-              buttonText: 'Обновить',
-              color: kBlack,
-            ),
-            orElse: () => const LoadingBody(),
-          );
-        },
+    return InternetListener(
+      child: Scaffold(
+        backgroundColor: kWhite,
+        appBar: const SmsSenderAppBar(),
+        body: BlocConsumer<SmsSenderCubit, SmsSenderState>(
+          listenWhen: (previous, current) => current.status.isSuccess,
+          buildWhen: (previous, current) => !current.status.isSuccess,
+          listener: (context, state) {
+            if (state.isFirstTime) {
+              Navigator.of(context).pushNamed(
+                CodeVerificationScreen.routeName,
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state.status.isLoading) {
+              return const LoadingBody(
+                color: kBlack,
+              );
+            }
+            if (state.status.isFailure) {
+              return FailureBody(
+                onTap: () => context.read<SmsSenderCubit>().refresh(),
+                fault: state.fault,
+                buttonText: 'Обновить',
+                color: kBlack,
+              );
+            }
+            return SmsSenderBody(
+              phoneNumber: state.phoneNumber,
+              isCorrect: state.isCorrect,
+            );
+          },
+        ),
       ),
     );
   }

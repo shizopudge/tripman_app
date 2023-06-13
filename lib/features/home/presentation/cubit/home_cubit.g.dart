@@ -8,7 +8,7 @@ part of 'home_cubit.dart';
 
 _$_Loading _$$_LoadingFromJson(Map<String, dynamic> json) => _$_Loading(
       selectedTripType: json['selectedTripType'] == null
-          ? LocalConstants.defaultTripType
+          ? AppConstantData.defaultTripType
           : TripType.fromJson(json['selectedTripType'] as Map<String, dynamic>),
       selectedDateInterval: json['selectedDateInterval'] == null
           ? null

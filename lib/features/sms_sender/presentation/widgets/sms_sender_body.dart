@@ -34,6 +34,7 @@ class _SmsSenderBodyState extends State<SmsSenderBody> {
 
   @override
   void dispose() {
+    _phoneController.removeListener(_phoneListener);
     _phoneController.dispose();
     _phoneFocusNode.dispose();
     super.dispose();

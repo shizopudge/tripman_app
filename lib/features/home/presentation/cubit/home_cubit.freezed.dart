@@ -275,7 +275,7 @@ class __$$_LoadingCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Loading extends _Loading {
   const _$_Loading(
-      {this.selectedTripType = LocalConstants.defaultTripType,
+      {this.selectedTripType = AppConstantData.defaultTripType,
       this.selectedDateInterval = null,
       this.isMenuOpened = false,
       this.isRefreshing = false,
