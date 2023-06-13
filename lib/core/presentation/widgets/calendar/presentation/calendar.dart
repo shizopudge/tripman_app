@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tripman/core/presentation/animations/fade_animation_x.dart';
+import '../../../animations/fade_animation_x.dart';
 
 import '../../../../domain/entities/date_interval/date_interval.dart';
 import '../../../../styles/styles.dart';
